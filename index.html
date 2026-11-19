@@ -49,7 +49,8 @@ nav .links a:hover{color:#fff}
 nav .btn{padding:11px 22px;font-size:15px}
 /* hero */
 .hero{position:relative;overflow:hidden;padding:64px 0 84px;background:radial-gradient(900px 500px at 85% 20%,rgba(179,36,95,.35),transparent 60%),radial-gradient(700px 500px at 10% 90%,rgba(201,168,106,.14),transparent 60%),var(--plum)}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;column-gap:54px;row-gap:0;align-items:center}
+.h-top{grid-column:1;grid-row:1;align-self:end}.h-bot{grid-column:1;grid-row:2;align-self:start}.stage{grid-column:2;grid-row:1/3}
 .hero h1 em{font-style:normal;color:var(--pink)}
 .hero .sub{margin:22px 0 30px;max-width:540px}
 .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -57,7 +58,7 @@ nav .btn{padding:11px 22px;font-size:15px}
 .chip{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--soft)}
 .chip b{color:#fff}
 .stage{position:relative;justify-self:center}
-.phone{position:relative;width:min(310px,74vw);background:#0f0b14;border-radius:46px;padding:11px;box-shadow:0 50px 100px rgba(0,0,0,.55),0 0 0 1.5px rgba(201,168,106,.45)}
+.phone{position:relative;width:min(360px,74vw);background:#0f0b14;border-radius:46px;padding:11px;box-shadow:0 50px 100px rgba(0,0,0,.55),0 0 0 1.5px rgba(201,168,106,.45)}
 .phone video{border-radius:36px;width:100%;aspect-ratio:9/16;object-fit:cover;background:#fff}
 .sound{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(31,20,40,.88);color:#fff;border:1.5px solid var(--gold);border-radius:999px;padding:11px 18px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap;animation:pulse 2s infinite}
 .sound svg{width:18px;height:18px}
@@ -174,7 +175,12 @@ footer a{color:#fff}
  nav .links{display:none}
  .hero{padding:34px 0 64px}
  .hero .wrap,.feat,.feat.flip,.duo,.plans{grid-template-columns:1fr}
- .hero .wrap{gap:40px}
+ .hero .wrap{gap:0}
+ .h-top,.h-bot,.stage{grid-column:1;grid-row:auto}
+ .stage{margin:22px 0 4px}
+ .hero .phone{width:min(250px,64vw);border-radius:38px;padding:9px}
+ .hero .phone video{border-radius:30px}
+ .hm2{display:none}
  .feat.flip .txt{order:0}
  .feat{gap:26px;margin-top:64px}
  .grid3,.steps{grid-template-columns:1fr}
@@ -200,23 +206,26 @@ footer a{color:#fff}
 </div></nav>
 
 <header class="hero"><div class="wrap">
- <div>
+ <div class="h-top">
   <div class="kicker">For nail techs &amp; makeup artists</div>
   <h1 style="margin-top:16px">Fully booked…<br><em>but where's the money?</em></h1>
-  <p class="sub">The Excel + Google Sheets planner that shows the real cost of every service, what you actually kept this month, and who to rebook this week.</p>
-  <div class="cta">
-   <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
-   <button class="btn btn-line" id="watch" type="button">Watch the 16-sec video</button>
-  </div>
-  <div class="chips">
-   <span class="chip"><b>5-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip"><b>One payment</b>, no subscription</span><span class="chip"><b>Instant</b> download</span>
-  </div>
  </div>
  <div class="stage">
   <div class="phone">
    <video id="demo" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3MKjPnH9Bv2KB4hydGC09naYFdH/f1e6fb49-81cc-4540-8409-ead84571b069.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3MKjPnH9Bv2KB4hydGC09naYFdH/4be0c7ab-b2ed-41f7-b259-8d88a7fc42b7.jpg" autoplay muted playsinline preload="auto" aria-label="16-second video about the planner with voiceover"></video>
    <button class="sound" id="sound" type="button" aria-label="Turn sound on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Tap for sound</span></button>
   </div>
+ </div>
+ <div class="h-bot">
+  <p class="sub">The Excel + Google Sheets planner that shows the real cost of every service, what you actually kept this month, and who to rebook this week.</p>
+  <div class="cta">
+   <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
+   <button class="btn btn-line" id="watch" type="button">Watch the 16-sec video</button>
+  </div>
+  <div class="chips">
+   <span class="chip"><b>5-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>One payment</b>, no subscription</span><span class="chip hm2"><b>Instant</b> download</span>
+  </div>
+ 
  </div>
 </div></header>
 
