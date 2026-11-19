@@ -4,259 +4,328 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nail &amp; Makeup Profit Planner | StudioMargin</title>
-<meta name="description" content="The Excel + Google Sheets planner for nail techs and makeup artists. Price every service right, log clients in seconds and see what you really kept.">
-<meta property="og:title" content="Nail & Makeup Profit Planner">
-<meta property="og:description" content="Fully booked... but where's the money? Know what every appointment really earns you.">
+<meta name="description" content="The Excel + Google Sheets planner for nail techs and makeup artists. See the real cost of every service, what you kept this month and who to rebook. From $15.">
+<meta property="og:title" content="Nail & Makeup Profit Planner by StudioMargin">
+<meta property="og:description" content="Fully booked... but where's the money? See what every appointment really earns you. From $15.">
 <meta property="og:image" content="https://studiomargin.github.io/og.jpg">
+<meta property="og:url" content="https://studiomargin.github.io/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <style>
-:root{--plum:#2B1D36;--plum2:#3A2A48;--rasp:#B3245F;--blush:#FBEAF1;--cream:#FFF7FA;--gold:#C9A86A;--ink:#1F1B24;--mute:#5C5466;--line:#EDE4F0;--mint:#E3F4EE;--peach:#FFF0E3}
+:root{--plum:#2B1D36;--plum2:#352545;--plum3:#41304F;--rasp:#B3245F;--pink:#F4C7D7;--gold:#C9A86A;--gold2:#E3C98F;--cream:#FFF7FA;--blush:#FBEAF1;--ink:#1F1B24;--mute:#5C5466;--soft:#CDBFD8;--line:rgba(255,255,255,.10)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--cream);line-height:1.5;-webkit-font-smoothing:antialiased}
-img,video{display:block;max-width:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--plum);color:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%;height:auto}
 a{color:inherit}
-.serif{font-family:Georgia,"Times New Roman",serif}
-.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
-.kicker{font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--rasp)}
-h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;line-height:1.08;letter-spacing:-.01em}
-h1{font-size:clamp(40px,7vw,72px)}
-h2{font-size:clamp(30px,4.6vw,48px)}
-h3{font-size:22px}
-.sub{font-size:clamp(17px,2vw,20px);color:var(--mute)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 28px;border-radius:999px;font-weight:700;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:-.015em;line-height:1.06}
+h1{font-size:clamp(42px,6.6vw,76px)}
+h2{font-size:clamp(32px,4.4vw,52px)}
+h3{font-size:24px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.kicker{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold)}
+.sub{font-size:clamp(17px,1.9vw,20px);color:var(--soft)}
+.gold{color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 30px;border-radius:999px;font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:0}
 .btn:hover{transform:translateY(-2px)}
-.btn-main{background:var(--rasp);color:#fff;box-shadow:0 12px 28px rgba(179,36,95,.32)}
-.btn-ghost{border:2px solid var(--plum);color:var(--plum)}
-.btn-gold{background:var(--gold);color:var(--plum)}
-.shot{border-radius:14px;box-shadow:0 24px 60px rgba(43,29,54,.18);background:#fff;overflow:hidden}
-/* nav */
-nav{position:sticky;top:0;z-index:10;background:rgba(255,247,250,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.btn-gold{background:linear-gradient(180deg,#D8BA7E,#C29E5E);color:#24172F;box-shadow:0 14px 34px rgba(201,168,106,.35)}
+.btn-line{border:1.5px solid rgba(255,255,255,.35);color:#fff;background:transparent}
+.btn-dark{background:var(--plum);color:#fff}
+.btn small{font-weight:600;opacity:.75}
+.zoom{border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06)}
+.zoom img{width:100%}
+.cap{font-size:13px;color:#9F8FB0;margin-top:10px}
+/* bar + nav */
+.bar{background:linear-gradient(90deg,#B3245F,#8E1F4F);text-align:center;font-size:14px;font-weight:700;padding:9px 12px}
+.bar b{color:#FFE7B8}
+nav{position:sticky;top:0;z-index:30;background:rgba(43,29,54,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
 nav img{height:26px;width:auto}
-nav .btn{padding:10px 20px;font-size:15px}
+nav .links{display:flex;gap:26px;font-size:15px;font-weight:600;color:var(--soft)}
+nav .links a{text-decoration:none}
+nav .links a:hover{color:#fff}
+nav .btn{padding:11px 22px;font-size:15px}
 /* hero */
-.hero{padding:56px 0 72px;background:linear-gradient(135deg,#FFF7FA 0%,#FBEAF1 60%,#F3EAFB 100%)}
-.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-.hero h1 span{color:var(--rasp)}
-.hero .sub{margin:20px 0 28px;max-width:520px}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:22px;font-size:14px;color:var(--mute)}
-.trust b{color:var(--ink)}
-.phone{width:min(300px,78vw);margin:0 auto;background:#1d1a22;border-radius:44px;padding:12px;box-shadow:0 40px 80px rgba(43,29,54,.35)}
-.phone video{border-radius:34px;width:100%;aspect-ratio:9/16;object-fit:cover;background:#2B1D36}
+.hero{position:relative;overflow:hidden;padding:64px 0 84px;background:radial-gradient(900px 500px at 85% 20%,rgba(179,36,95,.35),transparent 60%),radial-gradient(700px 500px at 10% 90%,rgba(201,168,106,.14),transparent 60%),var(--plum)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero .sub{margin:22px 0 30px;max-width:540px}
+.cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chip{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:999px;padding:8px 14px;font-size:14px;color:var(--soft)}
+.chip b{color:#fff}
+.stage{position:relative;justify-self:center}
+.phone{position:relative;width:min(310px,74vw);background:#0f0b14;border-radius:46px;padding:11px;box-shadow:0 50px 100px rgba(0,0,0,.55),0 0 0 1.5px rgba(201,168,106,.45)}
+.phone video{border-radius:36px;width:100%;aspect-ratio:9/16;object-fit:cover;background:#fff}
+.sound{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:rgba(31,20,40,.88);color:#fff;border:1.5px solid var(--gold);border-radius:999px;padding:11px 18px;font-weight:800;font-size:15px;cursor:pointer;white-space:nowrap;animation:pulse 2s infinite}
+.sound svg{width:18px;height:18px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,168,106,.55)}50%{box-shadow:0 0 0 12px rgba(201,168,106,0)}}
+.float{position:absolute;z-index:3;background:#fff;color:var(--ink);border-radius:18px;padding:14px 18px;box-shadow:0 24px 60px rgba(0,0,0,.4);font-size:14px;line-height:1.3}
+.float b{display:block;font-family:Georgia,serif;font-size:26px;color:var(--rasp)}
+.f1{left:-150px;top:60px}.f2{right:-120px;bottom:130px}
 /* sections */
-section{padding:84px 0}
+section{padding:96px 0}
+.light{background:var(--cream);color:var(--ink)}
+.light .sub,.light p{color:var(--mute)}
+.light .kicker{color:var(--rasp)}
 .center{text-align:center}
-.center .sub{max-width:640px;margin:14px auto 0}
-.pain{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.card{background:#fff;border-radius:20px;padding:26px;box-shadow:0 10px 30px rgba(43,29,54,.07)}
-.card h3{margin-bottom:8px}
-.card p{color:var(--mute)}
-.steps{counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}
-.steps .card:before{counter-increment:s;content:counter(s);display:inline-flex;width:38px;height:38px;border-radius:50%;background:var(--blush);color:var(--rasp);font-weight:800;align-items:center;justify-content:center;margin-bottom:14px}
-.feature{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center;margin-top:72px}
-.feature.flip{grid-template-columns:1.1fr .9fr}
-.feature.flip .txt{order:2}
-.feature .sub{margin-top:12px}
-.feature ul{list-style:none;margin-top:18px}
-.feature li{padding:8px 0 8px 30px;position:relative;color:var(--ink)}
-.feature li:before{content:"";position:absolute;left:0;top:15px;width:16px;height:9px;border-left:3px solid var(--rasp);border-bottom:3px solid var(--rasp);transform:rotate(-45deg)}
-.dark{background:var(--plum);color:#fff}
-.dark .sub,.dark p{color:#E9DDF0}
-.dark .kicker{color:#F4C7D7}
-.dark .card{background:var(--plum2);box-shadow:none}
-.dark .card h3{color:var(--gold)}
-.only{display:inline-block;border:1.5px solid var(--gold);color:var(--gold);border-radius:999px;padding:5px 14px;font-size:12px;font-weight:700;letter-spacing:.14em;margin-bottom:14px}
-.duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px;align-items:start}
-.duo h3{margin-bottom:12px}
-/* pricing */
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;max-width:900px;margin-left:auto;margin-right:auto}
-.plan{background:#fff;border-radius:26px;padding:34px 30px;box-shadow:0 14px 40px rgba(43,29,54,.10);display:flex;flex-direction:column}
-.plan.best{background:var(--plum);color:#fff;border:3px solid var(--gold);position:relative}
-.plan .tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--plum);font-weight:800;font-size:12px;letter-spacing:.16em;padding:6px 16px;border-radius:999px}
+.center .sub{max-width:660px;margin:16px auto 0}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.card{background:var(--plum2);border:1px solid var(--line);border-radius:22px;padding:28px}
+.card h3{font-size:22px;margin-bottom:8px}
+.card p{color:var(--soft)}
+.light .card{background:#fff;border:0;box-shadow:0 12px 34px rgba(43,29,54,.08)}
+.light .card p{color:var(--mute)}
+.num{font-family:Georgia,serif;font-size:15px;color:var(--gold);font-weight:700;letter-spacing:.12em}
+.feat{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;margin-top:90px}
+.feat:first-of-type{margin-top:56px}
+.feat.flip{grid-template-columns:1.15fr .85fr}
+.feat.flip .txt{order:2}
+.feat .sub{margin-top:14px}
+.ticks{list-style:none;margin-top:20px}
+.ticks li{padding:7px 0 7px 32px;position:relative}
+.ticks li:before{content:"";position:absolute;left:2px;top:14px;width:15px;height:8px;border-left:3px solid var(--gold);border-bottom:3px solid var(--gold);transform:rotate(-45deg)}
+.light .ticks li:before{border-color:var(--rasp)}
+.stack{display:grid;gap:18px}
+.example{margin-top:18px;border-left:3px solid var(--gold);padding:10px 16px;background:rgba(201,168,106,.08);border-radius:0 12px 12px 0;font-size:15px;color:var(--soft)}
+.light .example{background:var(--blush);border-color:var(--rasp);color:var(--mute)}
+.only{display:inline-block;border:1.5px solid var(--gold);color:var(--gold);border-radius:999px;padding:5px 13px;font-size:11.5px;font-weight:800;letter-spacing:.16em;margin-bottom:14px}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;align-items:start}
+.duo h3{margin-bottom:14px}
+.midcta{display:flex;justify-content:center;margin-top:56px}
+/* plans */
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:48px auto 0;max-width:940px}
+.plan{border-radius:28px;padding:36px 32px;display:flex;flex-direction:column;background:#fff;color:var(--ink);box-shadow:0 20px 50px rgba(43,29,54,.12)}
+.plan.best{background:var(--plum);color:#fff;border:2px solid var(--gold);position:relative;box-shadow:0 30px 70px rgba(43,29,54,.35)}
+.tag{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--plum);font-weight:900;font-size:12px;letter-spacing:.16em;padding:7px 16px;border-radius:999px;white-space:nowrap}
 .plan h3{font-size:30px}
-.price{font-size:52px;font-weight:800;margin:10px 0 2px}
-.plan .note{font-size:14px;opacity:.75;margin-bottom:20px}
+.price{font-size:56px;font-weight:900;line-height:1;margin:14px 0 4px;font-family:Arial,sans-serif}
+.price span{font-size:17px;font-weight:600;opacity:.6}
+.plan .note{font-size:14px;opacity:.7;margin-bottom:22px}
 .plan ul{list-style:none;margin-bottom:28px;flex:1}
-.plan li{padding:7px 0;border-bottom:1px solid var(--line);font-size:16px}
-.plan.best li{border-color:rgba(255,255,255,.12)}
-.plan li.no{color:#B9AFC2;text-decoration:line-through}
+.plan li{padding:9px 0 9px 28px;border-bottom:1px solid #EFE6F2;position:relative;font-size:16px}
+.plan.best li{border-color:var(--line)}
+.plan li:before{content:"";position:absolute;left:2px;top:16px;width:12px;height:7px;border-left:2.5px solid var(--rasp);border-bottom:2.5px solid var(--rasp);transform:rotate(-45deg)}
+.plan.best li:before{border-color:var(--gold)}
 .plan .btn{width:100%}
-.small{font-size:14px;color:var(--mute)}
-/* faq */
-.faq{max-width:780px;margin:36px auto 0}
-details{background:#fff;border-radius:16px;padding:20px 24px;margin-bottom:12px;box-shadow:0 6px 20px rgba(43,29,54,.06)}
+.fine{font-size:13.5px;text-align:center;margin-top:12px;opacity:.7}
+/* compare */
+.cmpwrap{max-width:940px;margin:56px auto 0;overflow-x:auto;border-radius:22px;background:#fff;box-shadow:0 20px 50px rgba(43,29,54,.10)}
+table.cmp{width:100%;border-collapse:collapse;min-width:560px;color:var(--ink)}
+.cmp th,.cmp td{padding:15px 18px;border-bottom:1px solid #F0E8F3;text-align:center;font-size:15.5px}
+.cmp th:first-child,.cmp td:first-child{text-align:left}
+.cmp thead th{font-family:Georgia,serif;font-size:21px;padding:22px 18px;background:#FBF6FA}
+.cmp thead th.c{background:var(--plum);color:var(--gold)}
+.cmp td.c{background:#FBF5EA}
+.cmp .grp td{background:#F6EEF7;font-weight:800;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--rasp)}
+.y{color:#1F7A5C;font-weight:900;font-size:18px}
+.n{color:#C4B8CC}
+.cmp tfoot td{padding:20px 14px;border:0}
+.cmp tfoot .btn{padding:13px 20px;font-size:15px}
+/* steps / faq */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.faq{max-width:800px;margin:40px auto 0}
+details{background:var(--plum2);border:1px solid var(--line);border-radius:16px;padding:20px 24px;margin-bottom:12px}
 summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;font-size:17px}
-summary:after{content:"+";color:var(--rasp);font-size:22px;line-height:1}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--gold);font-size:24px;line-height:1}
 details[open] summary:after{content:"−"}
-details p{margin-top:12px;color:var(--mute)}
-.final{background:linear-gradient(135deg,#FBEAF1,#F3EAFB);text-align:center}
-footer{background:var(--plum);color:#CDBFD8;padding:40px 0;font-size:14px}
-footer .wrap{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+details p{margin-top:12px;color:var(--soft)}
+.help{display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between;background:linear-gradient(120deg,#3A2A48,#2B1D36);border:1px solid rgba(201,168,106,.35);border-radius:26px;padding:34px 38px;margin-top:56px}
+.help h3{font-size:28px}
+.help p{color:var(--soft);margin-top:6px}
+.final{text-align:center;background:radial-gradient(700px 400px at 50% 0%,rgba(179,36,95,.35),transparent 70%),var(--plum)}
+footer{border-top:1px solid var(--line);padding:42px 0;font-size:14px;color:#A898B8}
+footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
 footer img{height:22px}
 footer a{color:#fff}
 .sticky{display:none}
-@media (max-width:860px){
- .hero{padding:36px 0 56px}
- .hero .wrap,.feature,.feature.flip,.duo,.plans{grid-template-columns:1fr}
- .feature.flip .txt{order:0}
- .feature{gap:24px;margin-top:56px}
- .pain,.steps{grid-template-columns:1fr}
- section{padding:60px 0}
- .hero .phone{width:min(240px,70vw)}
+@media (max-width:900px){
+ nav .links{display:none}
+ .hero{padding:34px 0 64px}
+ .hero .wrap,.feat,.feat.flip,.duo,.plans{grid-template-columns:1fr}
+ .hero .wrap{gap:40px}
+ .feat.flip .txt{order:0}
+ .feat{gap:26px;margin-top:64px}
+ .grid3,.steps{grid-template-columns:1fr}
+ section{padding:68px 0}
+ .float{display:none}
  .plan.best{order:-1}
- .sticky{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:20;box-shadow:0 14px 30px rgba(43,29,54,.35)}
- footer{padding-bottom:96px}
+ .help{padding:28px}
+ .sticky{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;box-shadow:0 16px 36px rgba(0,0,0,.45)}
+ footer{padding-bottom:100px}
 }
 </style>
 </head>
 <body>
 
+<div class="bar">Launch prices: Starter <b>$15</b> · Complete <b>$29</b> · Instant download</div>
+
 <nav><div class="wrap">
- <img src="wordmark_light.png" alt="studiomargin" width="142" height="26">
- <a class="btn btn-main" href="#pricing">Get the planner</a>
+ <img src="wordmark_dark.png" alt="studiomargin" width="142" height="26">
+ <div class="links"><a href="#how">How it works</a><a href="#compare">Compare</a><a href="#faq">FAQ</a><a href="mailto:studiomargin.help@gmail.com">Help</a></div>
+ <a class="btn btn-gold" href="#pricing">Get the planner</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
  <div>
   <div class="kicker">For nail techs &amp; makeup artists</div>
-  <h1 style="margin-top:14px">Fully booked…<br><span>but where's the money?</span></h1>
-  <p class="sub">The Excel + Google Sheets planner that shows what every appointment really earns you, and what to do about it each week.</p>
+  <h1 style="margin-top:16px">Fully booked…<br><em>but where's the money?</em></h1>
+  <p class="sub">The Excel + Google Sheets planner that shows the real cost of every service, what you actually kept this month, and who to rebook this week.</p>
   <div class="cta">
-   <a class="btn btn-main" href="#pricing">See plans from $15</a>
-   <a class="btn btn-ghost" href="#how">How it works</a>
+   <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
+   <button class="btn btn-line" id="watch" type="button">Watch the 17-sec demo</button>
   </div>
-  <div class="trust"><span><b>5-minute</b> setup</span><span><b>Excel</b> + <b>Google Sheets</b></span><span><b>Instant</b> download</span><span><b>No</b> subscription</span></div>
+  <div class="chips">
+   <span class="chip"><b>5-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip"><b>One payment</b>, no subscription</span><span class="chip"><b>Instant</b> download</span>
+  </div>
  </div>
- <div class="phone"><video src="ad.mp4" poster="ad_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Short demo of the planner"></video></div>
+ <div class="stage">
+  <div class="float f1">Example month<b>Kept 4,504</b>of 5,750 taken in</div>
+  <div class="float f2">This week<b>Text Hannah</b>due for a rebook</div>
+  <div class="phone">
+   <video id="demo" src="demo.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="17-second demo of the planner with voiceover"></video>
+   <button class="sound" id="sound" type="button" aria-label="Turn sound on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Tap for sound</span></button>
+  </div>
+ </div>
 </div></header>
 
 <section><div class="wrap center">
  <div class="kicker">Sound familiar?</div>
  <h2 style="margin-top:12px">Busy every day. Unsure every month.</h2>
- <div class="pain">
-  <div class="card"><h3>Guessing your prices</h3><p>You copied what others charge, but never counted products, time and rent.</p></div>
-  <div class="card"><h3>Money in, money out</h3><p>Lots goes through your hands. How much you actually kept is a mystery.</p></div>
-  <div class="card"><h3>Clients slip away</h3><p>Regulars forget to rebook, and you only notice when the diary goes quiet.</p></div>
+ <div class="grid3" style="text-align:left">
+  <div class="card"><div class="num">01</div><h3 style="margin-top:10px">Guessing your prices</h3><p>You copied what others charge but never counted products, your time and rent.</p></div>
+  <div class="card"><div class="num">02</div><h3 style="margin-top:10px">Money in, money out</h3><p>Plenty goes through your hands. What you actually kept is a mystery.</p></div>
+  <div class="card"><div class="num">03</div><h3 style="margin-top:10px">Regulars slip away</h3><p>Clients forget to rebook, and you only notice when the diary goes quiet.</p></div>
  </div>
 </div></section>
 
-<section id="how" style="background:#fff"><div class="wrap">
+<section class="light" id="how"><div class="wrap">
  <div class="center">
   <div class="kicker">How it works</div>
   <h2 style="margin-top:12px">Type it once. It does the maths.</h2>
  </div>
  <div class="steps">
-  <div class="card"><h3>Add your services</h3><p>Minutes, product cost, your price. Any service: gel, BIAB, glam, bridal.</p></div>
-  <div class="card"><h3>Log each appointment</h3><p>Pick the client and service. Price, time and rebook date fill in.</p></div>
-  <div class="card"><h3>See what you kept</h3><p>Took in − spent = kept, plus your 3 moves for the week.</p></div>
+  <div class="card"><div class="num" style="color:var(--rasp)">STEP 1</div><h3 style="margin-top:10px">Add your services</h3><p>Minutes, product cost and your price. Gel, BIAB, glam, bridal: any service.</p></div>
+  <div class="card"><div class="num" style="color:var(--rasp)">STEP 2</div><h3 style="margin-top:10px">Log each appointment</h3><p>Pick the client and service. Price, time and rebook date fill in by themselves.</p></div>
+  <div class="card"><div class="num" style="color:var(--rasp)">STEP 3</div><h3 style="margin-top:10px">See what you kept</h3><p>Took in − spent = kept, plus 3 moves to make this week.</p></div>
  </div>
 
- <div class="feature">
+ <div class="feat">
   <div class="txt">
    <div class="kicker">Your month at a glance</div>
    <h2 style="margin-top:10px">See what you really kept.</h2>
-   <p class="sub">One page shows money in, money out and what's left, compared with last month.</p>
-   <ul><li>Your 3 moves: who to text, which price to raise, what to reorder</li><li>Hours booked and what you earn per hour</li><li>Tax pot: how much to set aside</li></ul>
+   <p class="sub">Money in, money out and what's left, compared with last month, with a chart that shows exactly where it went.</p>
+   <ul class="ticks"><li>Hours booked and what you earn per hour</li><li>Tax pot: how much to set aside</li><li>Pick any month to look back</li></ul>
   </div>
-  <img class="shot" src="dash.webp" alt="Dashboard showing took in, spent and kept" loading="lazy" width="1400" height="840">
+  <div class="stack">
+   <div class="zoom"><picture><source media="(max-width:700px)" srcset="m_kept.webp"><img src="z_kept.webp" alt="Took in 5,750 minus spent 1,246 equals kept 4,504" width="1600" height="207" loading="lazy"></picture></div>
+   <div class="zoom"><picture><source media="(max-width:700px)" srcset="m_money.webp"><img src="z_money.webp" alt="Chart of where the money went" width="1600" height="321" loading="lazy"></picture></div>
+   <div class="cap">Example file. Names and numbers are made up.</div>
+  </div>
  </div>
 
- <div class="feature flip">
+ <div class="feat flip">
+  <div class="txt">
+   <div class="kicker">It tells you what to do</div>
+   <h2 style="margin-top:10px">Your 3 moves this week.</h2>
+   <p class="sub">Not just charts. Every week it picks the client to text, the price worth raising and what to reorder.</p>
+   <ul class="ticks"><li>Who's due back, with dates</li><li>The one raise worth the most</li><li>Every client's history fills in by itself</li></ul>
+  </div>
+  <div class="stack">
+   <div class="zoom"><picture><source media="(max-width:700px)" srcset="m_moves.webp"><img src="z_moves.webp" alt="Three weekly moves: rebook, price, stock" width="1600" height="166" loading="lazy"></picture></div>
+   <div class="zoom" style="max-width:460px"><img src="z_rebook.webp" alt="Clients due for a rebook" width="773" height="341" loading="lazy"></div>
+   <div class="cap">Example file. Names and numbers are made up.</div>
+  </div>
+ </div>
+
+ <div class="feat">
   <div class="txt">
    <div class="kicker">Price every service right</div>
    <h2 style="margin-top:10px">Real cost. Right price.</h2>
-   <p class="sub">Products + your time + overhead, and the price that pays you properly. Services below target are flagged.</p>
+   <p class="sub">Products + your time + overhead, and the price that pays you properly. Anything too cheap is flagged.</p>
+   <div class="example">Example: a $45 gel mani has a real cost of $37 once your time, products and overhead count. The planner suggests $46.25.</div>
   </div>
-  <img class="shot" src="pricing.webp" alt="Service menu with real cost and suggested price" loading="lazy" width="1337" height="485">
+  <div class="stack">
+   <div class="zoom"><img src="z_pricing.webp" alt="Service prices with real cost, suggested price and status" width="1257" height="488" loading="lazy"></div>
+   <div class="cap">Example file. Set your own hourly pay and margin.</div>
+  </div>
  </div>
 
- <div class="feature">
+ <div class="feat flip">
   <div class="txt">
    <div class="kicker">Log a client in seconds</div>
    <h2 style="margin-top:10px">Pick the service. Done.</h2>
-   <p class="sub">Each row checks itself and shows what you keep. Her last visit and notes appear as you type her name.</p>
+   <p class="sub">Each row checks itself and shows what you keep. Her last visit and notes, like allergies, appear as you type her name.</p>
   </div>
-  <img class="shot" src="entry.webp" alt="Appointments log with saved checks and client notes" loading="lazy" width="1197" height="357">
+  <div class="stack">
+   <div class="zoom"><img src="entry.webp" alt="Appointments log with checks and client notes" width="1197" height="357" loading="lazy"></div>
+  </div>
  </div>
+ <div class="midcta"><a class="btn btn-dark" href="#pricing">See both plans <small>from $15</small></a></div>
 </div></section>
 
 <section><div class="wrap">
  <div class="center">
   <div class="kicker">One planner, every service</div>
-  <h2 style="margin-top:12px">Nails. Makeup. Both.</h2>
-  <p class="sub">Use the examples or type your own menu. Up to 50 services.</p>
+  <h2 style="margin-top:12px">Nails. Makeup. <span class="gold">Both.</span></h2>
+  <p class="sub">Keep the examples or type your own menu: up to 50 services, including lashes and brows.</p>
  </div>
  <div class="duo">
-  <div><h3>Nail tech</h3><img class="shot" src="nails.webp" alt="Nail services with price and keep per hour" loading="lazy" width="1096" height="449"></div>
-  <div><h3>Makeup artist</h3><img class="shot" src="makeup.webp" alt="Makeup services with price and keep per hour" loading="lazy" width="1096" height="237"></div>
+  <div><h3>Nail tech</h3><div class="zoom"><img src="nails.webp" alt="Nail services with price and keep per hour" width="1096" height="449" loading="lazy"></div></div>
+  <div><h3>Makeup artist</h3><div class="zoom"><img src="makeup.webp" alt="Makeup services with price and keep per hour" width="1096" height="237" loading="lazy"></div></div>
  </div>
 </div></section>
 
-<section class="dark"><div class="wrap">
+<section style="background:var(--plum2)"><div class="wrap">
  <div class="center">
   <div class="kicker">The Complete planner adds</div>
   <h2 style="margin-top:12px">Run the whole studio.</h2>
  </div>
- <div class="feature">
-  <div class="txt">
-   <span class="only">ONLY IN COMPLETE</span>
-   <h2>Never run out mid-set.</h2>
-   <p class="sub">Stock value and reorder alerts for gels, foundation, lashes and more.</p>
-  </div>
-  <img class="shot" src="stock.webp" alt="Supplies page with reorder alerts" loading="lazy" width="1600" height="584">
+ <div class="feat">
+  <div class="txt"><span class="only">ONLY IN COMPLETE</span><h2>Never run out mid-set.</h2><p class="sub">Stock value and reorder alerts for gels, foundation, lashes and more.</p></div>
+  <div class="zoom"><img src="stock.webp" alt="Supplies page with reorder alerts" width="1600" height="584" loading="lazy"></div>
  </div>
- <div class="feature flip">
-  <div class="txt">
-   <span class="only">ONLY IN COMPLETE</span>
-   <h2>Your whole year on one page.</h2>
-   <p class="sub">12 months against your goal, costs by category for your accountant, and a year in review.</p>
-  </div>
-  <img class="shot" src="year.webp" alt="Year summary with monthly chart" loading="lazy" width="1400" height="1103" style="max-width:560px;margin:0 auto">
+ <div class="feat flip">
+  <div class="txt"><span class="only">ONLY IN COMPLETE</span><h2>Your whole year on one page.</h2><p class="sub">12 months against your goal, costs by category for your accountant, and a year in review.</p></div>
+  <div class="zoom" style="max-width:500px;justify-self:center"><img src="year.webp" alt="Year summary" width="1400" height="1103" loading="lazy"></div>
  </div>
- <div class="feature">
-  <div class="txt">
-   <span class="only">ONLY IN COMPLETE</span>
-   <h2>Your price list, ready for Instagram.</h2>
-   <p class="sub">Your services become a salon menu card with your studio name. Screenshot it or print it. Plus an income-goal planner and a phone inbox for bookings.</p>
-  </div>
-  <img class="shot" src="pricelist.webp" alt="Price list card" loading="lazy" width="700" height="736" style="max-width:420px;margin:0 auto">
+ <div class="feat">
+  <div class="txt"><span class="only">ONLY IN COMPLETE</span><h2>A price list ready for Instagram.</h2><p class="sub">Your services become a salon menu card with your studio name. Screenshot or print it. Plus an income-goal planner and a phone inbox for booking requests.</p></div>
+  <div class="zoom" style="max-width:420px;justify-self:center"><img src="pricelist.webp" alt="Price list card" width="700" height="736" loading="lazy"></div>
  </div>
 </div></section>
 
-<section id="pricing"><div class="wrap">
+<section class="light" id="pricing"><div class="wrap">
  <div class="center">
   <div class="kicker">Pick your planner</div>
   <h2 style="margin-top:12px">One payment. Yours to keep.</h2>
-  <p class="sub">Instant download. Excel and Google Sheets. Free updates for every 2.x version.</p>
+  <p class="sub">Instant download. Works in Excel and Google Sheets. Free updates for every 2.x version.</p>
  </div>
  <div class="plans">
   <div class="plan">
    <h3>Starter</h3>
-   <div class="price">$15</div>
-   <div class="note">6 essential pages</div>
+   <div class="price">$15 <span>one-time</span></div>
+   <div class="note">The 6 essential pages</div>
    <ul>
     <li>Pricing calculator: real cost + right price</li>
-    <li>Appointments with auto price and rebook</li>
+    <li>Appointments with auto price and rebook date</li>
     <li>Clients: notes, allergies, who's due back</li>
     <li>Money out by category</li>
     <li>Dashboard: took in − spent = kept</li>
     <li>Quick-start guide</li>
-    <li class="no">Stock, goals, year page, price list</li>
    </ul>
-   <a class="btn btn-ghost" href="https://marginalia70.gumroad.com/l/nail-tech-starter">Get Starter</a>
+   <a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter">Get Starter, $15</a>
   </div>
   <div class="plan best">
    <span class="tag">BEST VALUE</span>
    <h3>Complete</h3>
-   <div class="price">$29</div>
+   <div class="price">$29 <span>one-time</span></div>
    <div class="note">All 11 pages + example file</div>
    <ul>
-    <li>Everything in Starter</li>
+    <li><b>Everything in Starter</b></li>
     <li>Stock value + reorder alerts</li>
     <li>Income goal planner</li>
     <li>Tax-time year page + year in review</li>
@@ -264,28 +333,78 @@ footer a{color:#fff}
     <li>Phone inbox for booking requests</li>
     <li>Example file + 16-page guide</li>
    </ul>
-   <a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub">Get Complete</a>
+   <a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub">Get Complete, $29</a>
   </div>
  </div>
- <p class="small center" style="margin-top:22px">Secure checkout by Gumroad. Prices in USD.</p>
+ <p class="fine">Secure checkout by Gumroad · Prices in USD</p>
+
+ <div id="compare" class="center" style="margin-top:96px">
+  <div class="kicker">Compare</div>
+  <h2 style="margin-top:12px">Starter vs Complete</h2>
+ </div>
+ <div class="cmpwrap"><table class="cmp">
+  <thead><tr><th></th><th>Starter<br><span style="font-family:Arial;font-size:15px;color:var(--mute)">$15</span></th><th class="c">Complete<br><span style="font-family:Arial;font-size:15px;color:#fff">$29</span></th></tr></thead>
+  <tbody>
+   <tr class="grp"><td colspan="3">Price &amp; plan</td></tr>
+   <tr><td>Service menu with real cost &amp; suggested price</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Below-target price alerts</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Income goal planner (appointments a day you need)</td><td class="n">—</td><td class="c y">✓</td></tr>
+   <tr class="grp"><td colspan="3">Log &amp; track</td></tr>
+   <tr><td>Appointments: auto price, time, keep and rebook</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Clients: visits, spend, notes, who's due back</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Money out by category</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Supplies: stock value + reorder alerts</td><td class="n">—</td><td class="c y">✓</td></tr>
+   <tr><td>Phone inbox for booking requests</td><td class="n">—</td><td class="c y">✓</td></tr>
+   <tr class="grp"><td colspan="3">See results</td></tr>
+   <tr><td>Dashboard: took in − spent = kept</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Your money moves every week</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Year page for tax time + year in review</td><td class="n">—</td><td class="c y">✓</td></tr>
+   <tr><td>Instagram price list card</td><td class="n">—</td><td class="c y">✓</td></tr>
+   <tr class="grp"><td colspan="3">In the download</td></tr>
+   <tr><td>Pages</td><td>6</td><td class="c"><b>11</b></td></tr>
+   <tr><td>Excel file + one-click Google Sheets copy</td><td class="y">✓</td><td class="c y">✓</td></tr>
+   <tr><td>Guide</td><td>Quick start</td><td class="c">Quick start + 16-page guide</td></tr>
+   <tr><td>Filled-in example file to explore</td><td class="n">—</td><td class="c y">✓</td></tr>
+   <tr><td>Free updates for every 2.x version</td><td class="y">✓</td><td class="c y">✓</td></tr>
+  </tbody>
+  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub">Get Complete</a></td></tr></tfoot>
+ </table></div>
 </div></section>
 
-<section style="background:#fff"><div class="wrap">
- <div class="center"><div class="kicker">Questions</div><h2 style="margin-top:12px">Good to know</h2></div>
+<section><div class="wrap">
+ <div class="center">
+  <div class="kicker">After you buy</div>
+  <h2 style="margin-top:12px">Set up in 5 minutes.</h2>
+ </div>
+ <div class="steps">
+  <div class="card"><div class="num">01</div><h3 style="margin-top:10px">Download instantly</h3><p>Your files arrive by email straight after checkout, and in your Gumroad library.</p></div>
+  <div class="card"><div class="num">02</div><h3 style="margin-top:10px">Excel or Google Sheets</h3><p>Open the Excel file, or make your own Google Sheets copy with one click.</p></div>
+  <div class="card"><div class="num">03</div><h3 style="margin-top:10px">Follow the 6 steps</h3><p>The Home page walks you through settings, services and your first appointment.</p></div>
+ </div>
+
+ <div id="faq" class="center" style="margin-top:96px"><div class="kicker">Questions</div><h2 style="margin-top:12px">Good to know</h2></div>
  <div class="faq">
   <details><summary>Do I need Excel?</summary><p>No. Use the free Google Sheets copy (one click after purchase) or the Excel file. Both work the same.</p></details>
   <details><summary>Can I use it on my phone?</summary><p>Set it up once on a laptop, then log appointments in the Google Sheets app on your phone.</p></details>
-  <details><summary>I'm not good with spreadsheets.</summary><p>You only type in the lilac cells. Everything else is protected and fills in by itself. The Start Here page walks you through six steps.</p></details>
-  <details><summary>Which currency does it use?</summary><p>Pick from 25 currencies, or type your own code.</p></details>
+  <details><summary>I'm not good with spreadsheets.</summary><p>You only type in the lilac cells. Everything else is protected and fills in by itself, and the Home page walks you through six steps.</p></details>
+  <details><summary>Is it a subscription?</summary><p>No. One payment, yours to keep, with free updates for every 2.x version.</p></details>
+  <details><summary>Which should I choose?</summary><p>Starter if you want pricing, appointments, clients and your monthly profit. Complete if you also want stock alerts, an income-goal planner, a tax-time year page, the Instagram price list and the example file.</p></details>
+  <details><summary>Which currency does it use?</summary><p>Pick from 25 currencies, or type your own code. Checkout is in USD.</p></details>
+  <details><summary>Does it work for lashes, brows or hair?</summary><p>Yes. Type any service with its minutes and price. The examples are for nails and makeup.</p></details>
   <details><summary>Is this tax or financial advice?</summary><p>No. It's a planning tool to help you see your numbers. Speak to an accountant for tax.</p></details>
-  <details><summary>Need help?</summary><p>Email <a href="mailto:studiomargin.help@gmail.com">studiomargin.help@gmail.com</a>.</p></details>
+ </div>
+
+ <div class="help">
+  <div><h3>Questions before you buy?</h3><p>Email us and a real person from the StudioMargin team will help.</p></div>
+  <a class="btn btn-gold" href="mailto:studiomargin.help@gmail.com?subject=Question%20about%20the%20Profit%20Planner">studiomargin.help@gmail.com</a>
  </div>
 </div></section>
 
 <section class="final"><div class="wrap">
- <h2>Be fully booked, and profitable.</h2>
- <p class="sub" style="margin:14px auto 26px;max-width:560px">Five minutes to set up. Every week after, you know exactly where your money goes.</p>
- <a class="btn btn-main" href="#pricing">Get the planner</a>
+ <div class="kicker">StudioMargin</div>
+ <h2 style="margin-top:12px">Be fully booked, <span class="gold">and profitable.</span></h2>
+ <p class="sub" style="margin:16px auto 30px;max-width:560px">Five minutes to set up. Every week after, you know exactly where your money goes.</p>
+ <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
 </div></section>
 
 <footer><div class="wrap">
@@ -294,6 +413,16 @@ footer a{color:#fff}
  <div>© 2026 StudioMargin · Planning tool, not tax advice · Personal-use licence</div>
 </div></footer>
 
-<a class="btn btn-main sticky" href="#pricing">Get the planner, from $15</a>
+<a class="btn btn-gold sticky" href="#pricing">Get the planner, from $15</a>
+
+<script>
+(function(){
+ var v=document.getElementById('demo'),s=document.getElementById('sound'),w=document.getElementById('watch');
+ function on(){v.muted=false;v.currentTime=0;v.play();s.style.display='none';}
+ s.addEventListener('click',on);
+ v.addEventListener('click',function(){if(v.muted){on()}else{v.muted=true;s.style.display='flex'}});
+ w.addEventListener('click',function(){v.scrollIntoView({behavior:'smooth',block:'center'});on();});
+})();
+</script>
 </body>
 </html>
