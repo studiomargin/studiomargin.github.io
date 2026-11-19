@@ -568,9 +568,14 @@ footer a{color:#fff}
 <script src="https://gumroad.com/js/gumroad.js"></script>
 <script>
 (function(){
+ var T=window.smTrack=function(e){try{fetch('https://codautomation.app.n8n.cloud/webhook/sm-track?e='+e,{mode:'no-cors',keepalive:true})}catch(x){}};
+ T('views');
+ document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){a.addEventListener('click',function(){T(a.href.indexOf('nail-tech-hub')>-1?'buy_complete':'buy_starter')})});
+})();
+(function(){
  var m=document.getElementById('egm'),$=function(i){return document.getElementById(i)},tier='C';
  function setTier(t){tier=t;document.querySelectorAll('input[name=egtier]').forEach(function(r){r.checked=r.value===t;r.parentNode.classList.toggle('sel',r.value===t)});$('egamt').textContent=t==='C'?'699 EGP':'349 EGP'}
- function open(t){setTier(t||'C');$('egform').hidden=false;$('egdone').hidden=true;$('egerr').textContent='';m.classList.add('on');document.body.style.overflow='hidden'}
+ function open(t){window.smTrack&&window.smTrack('instapay_open');setTier(t||'C');$('egform').hidden=false;$('egdone').hidden=true;$('egerr').textContent='';m.classList.add('on');document.body.style.overflow='hidden'}
  function close(){m.classList.remove('on');document.body.style.overflow=''}
  document.querySelectorAll('.egopen').forEach(function(b){b.addEventListener('click',function(){open(b.getAttribute('data-tier'))})});
  document.querySelectorAll('input[name=egtier]').forEach(function(r){r.addEventListener('change',function(){setTier(r.value)})});
@@ -583,7 +588,7 @@ footer a{color:#fff}
   var b=$('egsend');b.disabled=true;b.textContent='Sending...';$('egerr').textContent='';
   fetch('https://codautomation.app.n8n.cloud/webhook/sm-eg-order',{method:'POST',body:new URLSearchParams(d)})
    .then(function(r){return r.json()}).then(function(j){
-    if(j&&j.ok){$('egid').textContent=j.id;$('egto').textContent=d.email;$('egform').hidden=true;$('egdone').hidden=false}
+    if(j&&j.ok){window.smTrack&&window.smTrack('instapay_sent');$('egid').textContent=j.id;$('egto').textContent=d.email;$('egform').hidden=true;$('egdone').hidden=false}
     else{$('egerr').textContent=(j&&j.error)||'Something went wrong. Please try again.'}
    }).catch(function(){$('egerr').textContent='Could not send. Check your connection, or email studiomargin.help@gmail.com.'})
    .then(function(){b.disabled=false;b.textContent="I've sent it"});
