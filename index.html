@@ -142,6 +142,30 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;
 footer img{height:22px}
 footer a{color:#fff}
 .sticky{display:none}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:980px;margin:44px auto 0;border-radius:26px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.4);border:1px solid rgba(201,168,106,.35)}
+.calc .in{background:var(--plum2);padding:32px}
+.calc .out{background:#fff;color:var(--ink);padding:32px;display:flex;flex-direction:column}
+.calc label{display:block;font-size:14px;font-weight:700;color:var(--soft);margin:0 0 6px}
+.calc .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.calc input,.calc select{width:100%;background:#fff;color:var(--ink);border:2px solid #E3D6EA;border-radius:12px;padding:12px 14px;font-size:17px;font-weight:700;font-family:inherit}
+.calc input:focus,.calc select:focus{outline:none;border-color:var(--gold)}
+.calc .hint{font-size:12.5px;color:#9F8FB0;margin-top:4px}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;border-bottom:1px solid #F0E8F3;font-size:16px}
+.res b{font-size:22px;font-family:Georgia,serif}
+.verdict{margin:18px 0;padding:16px 18px;border-radius:14px;font-weight:700;font-size:16px;line-height:1.4}
+.verdict.bad{background:#FCE8EF;color:#8E1F4F}.verdict.ok{background:#E3F4EE;color:#1F5E4F}
+.calc .out .btn{margin-top:auto}
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;max-width:980px;margin-left:auto;margin-right:auto}
+.fit .card ul{list-style:none;margin-top:12px}
+.fit .card li{padding:8px 0 8px 30px;position:relative}
+.fit .yes li:before{content:"";position:absolute;left:2px;top:14px;width:14px;height:8px;border-left:3px solid var(--gold);border-bottom:3px solid var(--gold);transform:rotate(-45deg)}
+.fit .no li:before{content:"×";position:absolute;left:4px;top:3px;color:#C4B8CC;font-size:22px;font-weight:700}
+.promise{display:flex;gap:16px;align-items:flex-start;max-width:940px;margin:28px auto 0;background:#fff;border:2px solid var(--gold);border-radius:20px;padding:22px 26px;color:var(--ink)}
+.promise .seal{flex:none;width:52px;height:52px;border-radius:50%;background:var(--plum);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px}
+.promise p{color:var(--mute);margin-top:4px}
+@media (max-width:900px){.calc,.fit{grid-template-columns:1fr}.calc .in,.calc .out{padding:24px}}
 @media (max-width:900px){
  nav .links{display:none}
  .hero{padding:34px 0 64px}
@@ -167,7 +191,7 @@ footer a{color:#fff}
 
 <nav><div class="wrap">
  <img src="wordmark_dark.png" alt="studiomargin" width="142" height="26">
- <div class="links"><a href="#how">How it works</a><a href="#compare">Compare</a><a href="#faq">FAQ</a><a href="mailto:studiomargin.help@gmail.com">Help</a></div>
+ <div class="links"><a href="#calculator">Price check</a><a href="#how">How it works</a><a href="#compare">Compare</a><a href="#faq">FAQ</a><a href="mailto:studiomargin.help@gmail.com">Help</a></div>
  <a class="btn btn-gold" href="#pricing">Get the planner</a>
 </div></nav>
 
@@ -201,6 +225,39 @@ footer a{color:#fff}
   <div class="card"><div class="num">01</div><h3 style="margin-top:10px">Guessing your prices</h3><p>You copied what others charge but never counted products, your time and rent.</p></div>
   <div class="card"><div class="num">02</div><h3 style="margin-top:10px">Money in, money out</h3><p>Plenty goes through your hands. What you actually kept is a mystery.</p></div>
   <div class="card"><div class="num">03</div><h3 style="margin-top:10px">Regulars slip away</h3><p>Clients forget to rebook, and you only notice when the diary goes quiet.</p></div>
+ </div>
+</div></section>
+
+
+<section id="calculator" style="background:var(--plum2)"><div class="wrap">
+ <div class="center">
+  <div class="kicker">Free price check</div>
+  <h2 style="margin-top:12px">Is your price <span class="gold">really</span> paying you?</h2>
+  <p class="sub">Try one service now. The planner does this for every service you offer.</p>
+ </div>
+ <div class="calc">
+  <div class="in">
+   <div class="row"><div><label for="cPrice">Your price</label><input id="cPrice" type="number" inputmode="decimal" min="0" value="45"></div>
+    <div><label for="cCur">Currency</label><select id="cCur"><option value="$">$ USD</option><option value="£">£ GBP</option><option value="€">€ EUR</option><option value="A$">A$ AUD</option><option value="C$">C$ CAD</option><option value="AED ">AED</option><option value="SAR ">SAR</option><option value="EGP ">EGP</option></select></div></div>
+   <div class="row"><div><label for="cMin">Minutes it takes</label><input id="cMin" type="number" inputmode="numeric" min="1" value="60"></div>
+    <div><label for="cProd">Product cost</label><input id="cProd" type="number" inputmode="decimal" min="0" value="6"><div class="hint">Gel, lashes, foundation…</div></div></div>
+   <div class="row"><div><label for="cPay">Hourly pay you want</label><input id="cPay" type="number" inputmode="decimal" min="0" value="25"></div>
+    <div><label for="cOver">Overhead per hour</label><input id="cOver" type="number" inputmode="decimal" min="0" value="6"><div class="hint">Rent, apps, insurance ÷ hours</div></div></div>
+   <div class="row" style="margin-bottom:0"><div><label for="cMar">Profit margin %</label><input id="cMar" type="number" inputmode="decimal" min="0" max="90" value="20"></div><div></div></div>
+  </div>
+  <div class="out">
+   <div class="res"><span>Real cost</span><b id="oCost">–</b></div>
+   <div class="res"><span>Suggested price</span><b id="oSug">–</b></div>
+   <div class="res"><span>You keep per hour</span><b id="oKeep">–</b></div>
+   <div class="verdict" id="oVer">–</div>
+   <a class="btn btn-gold" href="#pricing">Check every service <small>from $15</small></a>
+   <div class="cap" style="color:#8a8090">Same maths as the planner: real cost = products + your pay for the time + overhead. Before tax.</div>
+  </div>
+ </div>
+
+ <div class="fit">
+  <div class="card yes"><h3>Made for you if…</h3><ul><li>You're a solo nail tech, makeup artist, or lash or brow artist</li><li>You're busy but unsure what you actually keep</li><li>You want simple pages, not accounting software</li></ul></div>
+  <div class="card no"><h3>Not for you if…</h3><ul><li>You run a salon with staff and payroll</li><li>You need full bookkeeping or tax filing</li><li>You want a booking app (it works alongside yours)</li></ul></div>
  </div>
 </div></section>
 
@@ -339,6 +396,8 @@ footer a{color:#fff}
   </div>
  </div>
  <p class="fine">Secure checkout by Gumroad · Prices in USD</p>
+ <div class="promise"><div class="seal">✓</div><div><b>Our promise</b><p>If something's wrong with your spreadsheet, email us and we'll fix it. If we can't fix it, we'll refund you in full.</p></div></div>
+
 
  <div id="compare" class="center" style="margin-top:96px">
   <div class="kicker">Compare</div>
@@ -393,6 +452,7 @@ footer a{color:#fff}
   <details><summary>Which should I choose?</summary><p>Starter if you want pricing, appointments, clients and your monthly profit. Complete if you also want stock alerts, an income-goal planner, a tax-time year page, the Instagram price list and the example file.</p></details>
   <details><summary>Which currency does it use?</summary><p>Pick from 25 currencies, or type your own code. Checkout is in USD.</p></details>
   <details><summary>Does it work for lashes, brows or hair?</summary><p>Yes. Type any service with its minutes and price. The examples are for nails and makeup.</p></details>
+  <details><summary>What if something doesn't work?</summary><p>Email studiomargin.help@gmail.com. We'll fix it, and if we can't, we'll refund you in full.</p></details>
   <details><summary>Is this tax or financial advice?</summary><p>No. It's a planning tool to help you see your numbers. Speak to an accountant for tax.</p></details>
  </div>
 
@@ -427,6 +487,21 @@ footer a{color:#fff}
  var st=document.querySelector('.sticky'),pr=document.getElementById('pricing');
  function ck(){var r=pr.getBoundingClientRect();st.classList.toggle('show',window.scrollY>700&&!(r.top<window.innerHeight&&r.bottom>0));}
  window.addEventListener('scroll',ck,{passive:true});ck();
+
+ (function(){var $=function(i){return document.getElementById(i)};
+  function f(n,c){return c+(Math.round(n*100)/100).toFixed(2)}
+  function calc(){var P=+$('cPrice').value||0,M=+$('cMin').value||0,PR=+$('cProd').value||0,H=+$('cPay').value||0,O=+$('cOver').value||0,G=Math.min(+$('cMar').value||0,90)/100,c=$('cCur').value;
+   var h=M/60,cost=PR+H*h+O*h,sug=cost/(1-G),keep=h>0?(P-PR-O*h)/h:0;
+   $('oCost').textContent=f(cost,c);$('oSug').textContent=f(sug,c);$('oKeep').textContent=f(keep,c);
+   var v=$('oVer');
+   if(!M){v.className='verdict';v.textContent='Add the minutes to see your result.';return}
+   if(P+0.005<sug){v.className='verdict bad';v.textContent='Below target: you\'re about '+f(sug-P,c)+' short per appointment. Try '+f(sug,c)+'.'}
+   else{v.className='verdict ok';v.textContent='On target: this price covers your pay, overhead and margin.'}}
+  ['cPrice','cMin','cProd','cPay','cOver','cMar','cCur'].forEach(function(i){$(i).addEventListener('input',calc)});calc();
+ })();
+ // muted preview skips the slow opening; tap for sound restarts from the start
+ v.addEventListener('loadedmetadata',function(){if(v.muted)v.currentTime=4.2});
+ v.addEventListener('timeupdate',function(){if(v.muted&&v.currentTime<4)v.currentTime=4.2});
 })();
 </script>
 </body>
