@@ -194,6 +194,33 @@ footer a{color:#fff}
  .sticky.show{opacity:1;pointer-events:auto}
 }
 
+.trust{max-width:760px;margin:22px auto 0;border:1.5px solid #E6DCEB;border-radius:18px;background:#fff;color:var(--ink);padding:18px 20px}
+.trust-h{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px}
+.trust-h svg{flex:none}
+.trust-g{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px;margin-top:12px}
+.trust-g div{display:flex;gap:9px;align-items:flex-start;font-size:14px;line-height:1.4;color:var(--ink)}
+.trust-g div span{color:var(--mute);display:block;font-size:13px}
+.trust-g i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--blush);color:var(--rasp);font-style:normal;font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.pays{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;padding-top:12px;border-top:1px solid #F0E8F3;align-items:center}
+.pays b{font-size:12px;color:var(--mute);font-weight:600;margin-right:4px}
+.pays span{font-size:12px;font-weight:700;letter-spacing:.02em;border:1px solid #E6DCEB;border-radius:7px;padding:5px 9px;color:#3E3746;background:#FBF8FC}
+.egsafe{display:flex;gap:9px;align-items:flex-start;background:#F3FAF6;border:1px solid #CFE9DC;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.45;color:#1F5E4F;margin:12px 0 2px}
+.egsafe svg{flex:none;margin-top:1px}
+.egfoot{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;margin-top:12px;font-size:12px;color:var(--mute)}
+.egfoot span::before{content:"✓ ";color:var(--rasp);font-weight:800}
+@media(max-width:640px){.trust-g{grid-template-columns:1fr}}
+#demo{background:#2B1D36}
+@media(max-width:640px){
+ table.cmp{min-width:0}
+ .cmp th,.cmp td{padding:11px 8px;font-size:13.5px}
+ .cmp thead th{font-size:17px;padding:16px 8px}
+ .cmp .grp td{font-size:11px;letter-spacing:.1em}
+ .cmp tfoot td{padding:14px 6px}
+ .cmp tfoot .btn{padding:10px 12px;font-size:13px;white-space:nowrap}
+ .cmp th:not(:first-child),.cmp td:not(:first-child){width:24%}
+}
+@media(max-width:640px){.help .btn{width:100%;box-sizing:border-box;padding:14px 12px;font-size:14px;text-align:center;justify-content:center;overflow-wrap:anywhere}}
+@media(max-width:380px){.cmp th,.cmp td{padding:10px 5px;font-size:12.5px}.cmp thead th{font-size:15px}.cmp tfoot .btn{padding:9px 9px;font-size:12px}}
 .egbar{display:flex;align-items:center;gap:16px;max-width:760px;margin:18px auto 0;padding:14px 18px;border:1.5px solid #E6DCEB;border-radius:16px;background:#fff;color:var(--ink)}
 .egbar div{flex:1;display:flex;flex-direction:column;gap:2px;font-size:15px}.egbar span{color:var(--mute);font-size:14px}
 .egflag{flex:none;width:38px;height:38px;border-radius:50%;display:flex!important;align-items:center;justify-content:center;background:var(--gold);color:#24172F!important;font-weight:800;font-size:13px!important}
@@ -332,7 +359,16 @@ footer a{color:#fff}
    <a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete, $29</a>
   </div>
  </div>
- <p class="fine">Secure checkout by Gumroad · Cards, Apple Pay, Google Pay · Prices in USD</p>
+ <div class="trust" aria-label="Safe checkout">
+  <div class="trust-h" style="color:#1F5E4F"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Safe, encrypted checkout</div>
+  <div class="trust-g">
+   <div><i>✓</i><p style="margin:0"><b>Paid through Gumroad</b><span>A well-known checkout for digital products. Your connection is encrypted (https).</span></p></div>
+   <div><i>✓</i><p style="margin:0"><b>We never see your card</b><span>Card details go straight to Gumroad's payment processor, not to us.</span></p></div>
+   <div><i>✓</i><p style="margin:0"><b>Instant download</b><span>Your files and receipt arrive by email the moment you pay.</span></p></div>
+   <div><i>✓</i><p style="margin:0"><b>Receipt and real support</b><span>Every order gets an emailed receipt. Questions: studiomargin.help@gmail.com</span></p></div>
+  </div>
+  <div class="pays"><b>Pay with</b><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><b style="margin-left:auto">Prices in USD · one-time</b></div>
+ </div>
  <div class="egbar"><span class="egflag">EG</span><div><b>In Egypt? Pay in pounds with InstaPay.</b><span>Starter 349 EGP · Complete 699 EGP · download by email</span></div><button type="button" class="btn btn-dark egopen" data-tier="C">Pay with InstaPay</button></div>
  <div class="promise"><div class="seal">✓</div><div><b>Our promise</b><p>If something's wrong with your spreadsheet, email us and we'll fix it. If we can't fix it, we'll refund you in full.</p></div></div>
 
@@ -524,6 +560,7 @@ footer a{color:#fff}
   <div class="egstep">2 · Send the amount by InstaPay</div>
   <div class="egpay">Send <b id="egamt">699 EGP</b> to:
    <div class="egip"><code>ali.elnimer@instapay</code><button type="button" id="egcopy">Copy</button></div></div>
+  <div class="egsafe"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg><div>You pay inside your own InstaPay app, so your money never goes through this website. We will never ask for your PIN, OTP or card number.</div></div>
   <div class="egstep">3 · Tell us it's sent</div>
   <input type="text" id="egname" placeholder="Your name" autocomplete="name">
   <input type="email" id="egemail" placeholder="Email (your download goes here)" autocomplete="email">
@@ -532,6 +569,7 @@ footer a{color:#fff}
   <input type="text" id="egweb" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
   <div class="egerr" id="egerr"></div>
   <button type="button" class="btn btn-gold" id="egsend">I've sent it</button>
+  <div class="egfoot"><span>Order number + email confirmation</span><span>Your details are only used for your order</span><span>Help: studiomargin.help@gmail.com</span></div>
  </div>
  <div class="egdone" id="egdone" hidden><div class="ck">✓</div><h3>Order received</h3><p class="sub">Order <b id="egid"></b>. We've emailed you a confirmation. As soon as your InstaPay transfer arrives, your download link is on its way to <b id="egto"></b>.</p><button type="button" class="btn btn-dark egclose">Done</button></div>
 </div></div>
@@ -568,7 +606,7 @@ footer a{color:#fff}
 <script src="https://gumroad.com/js/gumroad.js"></script>
 <script>
 (function(){
- var T=window.smTrack=function(e){try{fetch('https://codautomation.app.n8n.cloud/webhook/sm-track?e='+e,{mode:'no-cors',keepalive:true})}catch(x){}};
+ var T=window.smTrack=function(e){try{fetch('https://codautomation.app.n8n.cloud/webhook/sm-track?e='+e,{mode:'no-cors',keepalive:true}).catch(function(){})}catch(x){}};
  T('views');
  document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){a.addEventListener('click',function(){T(a.href.indexOf('nail-tech-hub')>-1?'buy_complete':'buy_starter')})});
 })();
