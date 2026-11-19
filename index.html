@@ -193,6 +193,28 @@ footer a{color:#fff}
  footer{padding-bottom:100px}
  .sticky.show{opacity:1;pointer-events:auto}
 }
+
+.egbar{display:flex;align-items:center;gap:16px;max-width:760px;margin:18px auto 0;padding:14px 18px;border:1.5px solid #E6DCEB;border-radius:16px;background:#fff;color:var(--ink)}
+.egbar div{flex:1;display:flex;flex-direction:column;gap:2px;font-size:15px}.egbar span{color:var(--mute);font-size:14px}
+.egflag{flex:none;width:38px;height:38px;border-radius:50%;display:flex!important;align-items:center;justify-content:center;background:var(--gold);color:#24172F!important;font-weight:800;font-size:13px!important}
+.egbar .btn{padding:12px 20px;font-size:15px;border:1px solid var(--gold)}
+.egm{position:fixed;inset:0;z-index:60;background:rgba(15,8,20,.72);display:none;align-items:center;justify-content:center;padding:16px}
+.egm.on{display:flex}
+.egbox{background:#fff;color:var(--ink);border-radius:20px;max-width:440px;width:100%;max-height:92vh;overflow:auto;padding:24px 22px;position:relative}
+.egbox h3{font-size:21px;margin:0 0 4px}.egbox .sub{color:var(--mute);font-size:14px;margin:0 0 14px}
+.egx{position:absolute;right:12px;top:10px;border:0;background:none;font-size:26px;cursor:pointer;color:var(--mute)}
+.egstep{font-size:12px;letter-spacing:.14em;font-weight:800;color:var(--rasp);margin:14px 0 6px;text-transform:uppercase}
+.egtiers{display:flex;gap:8px}.egtiers label{flex:1;border:1.5px solid #E6DCEB;border-radius:12px;padding:10px;cursor:pointer;font-size:14px}
+.egtiers input{margin-right:6px}.egtiers label.sel{border-color:var(--rasp);background:var(--blush)}
+.egtiers b{display:block;font-size:17px}
+.egpay{background:var(--blush);border-radius:12px;padding:12px;font-size:14px}
+.egip{display:flex;gap:8px;align-items:center;margin-top:6px}.egip code{flex:1;background:#fff;border:1px dashed var(--rasp);border-radius:8px;padding:9px 10px;font-size:15px;font-weight:700;color:var(--ink)}
+.egip button{border:0;background:var(--rasp);color:#fff;border-radius:8px;padding:9px 12px;font-weight:700;cursor:pointer}
+.egbox input[type=text],.egbox input[type=email],.egbox input[type=tel]{width:100%;box-sizing:border-box;border:1.5px solid #E6DCEB;border-radius:10px;padding:11px 12px;font-size:15px;margin:4px 0 8px;font-family:inherit}
+.egbox .hp{position:absolute;left:-9999px}
+.egbox .btn{width:100%;margin-top:6px}.egerr{color:#B3245F;font-size:14px;min-height:18px}
+.egdone{text-align:center;padding:18px 4px}.egdone .ck{width:56px;height:56px;border-radius:50%;background:var(--rasp);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+@media(max-width:640px){.egbar{flex-wrap:wrap}.egbar .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -291,7 +313,7 @@ footer a{color:#fff}
     <li>Dashboard: took in − spent = kept</li>
     <li>Quick-start guide</li>
    </ul>
-   <a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter">Get Starter, $15</a>
+   <a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter, $15</a>
   </div>
   <div class="plan best">
    <span class="tag">BEST VALUE</span>
@@ -307,10 +329,11 @@ footer a{color:#fff}
     <li>Phone inbox for booking requests</li>
     <li>Example file + 16-page guide</li>
    </ul>
-   <a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub">Get Complete, $29</a>
+   <a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete, $29</a>
   </div>
  </div>
- <p class="fine">Secure checkout by Gumroad · Prices in USD</p>
+ <p class="fine">Secure checkout by Gumroad · Cards, Apple Pay, Google Pay · Prices in USD</p>
+ <div class="egbar"><span class="egflag">EG</span><div><b>In Egypt? Pay in pounds with InstaPay.</b><span>Starter 349 EGP · Complete 699 EGP · download by email</span></div><button type="button" class="btn btn-dark egopen" data-tier="C">Pay with InstaPay</button></div>
  <div class="promise"><div class="seal">✓</div><div><b>Our promise</b><p>If something's wrong with your spreadsheet, email us and we'll fix it. If we can't fix it, we'll refund you in full.</p></div></div>
 
 
@@ -343,7 +366,7 @@ footer a{color:#fff}
    <tr><td>Filled-in example file to explore</td><td class="n">—</td><td class="c y">✓</td></tr>
    <tr><td>Free updates for every 2.x version</td><td class="y">✓</td><td class="c y">✓</td></tr>
   </tbody>
-  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub">Get Complete</a></td></tr></tfoot>
+  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete</a></td></tr></tfoot>
  </table></div>
 </div></section>
 
@@ -488,6 +511,31 @@ footer a{color:#fff}
  <div>© 2026 StudioMargin · Planning tool, not tax advice · Personal-use licence</div>
 </div></footer>
 
+<div class="egm" id="egm" role="dialog" aria-modal="true" aria-labelledby="egt"><div class="egbox">
+ <button class="egx" type="button" aria-label="Close">×</button>
+ <div id="egform">
+  <h3 id="egt">Pay with InstaPay</h3>
+  <p class="sub">For buyers in Egypt. Your download link arrives by email once your transfer shows up, usually within an hour.</p>
+  <div class="egstep">1 · Choose your planner</div>
+  <div class="egtiers">
+   <label><input type="radio" name="egtier" value="S">Starter<b>349 EGP</b></label>
+   <label><input type="radio" name="egtier" value="C">Complete<b>699 EGP</b></label>
+  </div>
+  <div class="egstep">2 · Send the amount by InstaPay</div>
+  <div class="egpay">Send <b id="egamt">699 EGP</b> to:
+   <div class="egip"><code>ali.elnimer@instapay</code><button type="button" id="egcopy">Copy</button></div></div>
+  <div class="egstep">3 · Tell us it's sent</div>
+  <input type="text" id="egname" placeholder="Your name" autocomplete="name">
+  <input type="email" id="egemail" placeholder="Email (your download goes here)" autocomplete="email">
+  <input type="tel" id="egphone" placeholder="WhatsApp number (optional)" autocomplete="tel">
+  <input type="text" id="egpayer" placeholder="Name shown on your InstaPay transfer">
+  <input type="text" id="egweb" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <div class="egerr" id="egerr"></div>
+  <button type="button" class="btn btn-gold" id="egsend">I've sent it</button>
+ </div>
+ <div class="egdone" id="egdone" hidden><div class="ck">✓</div><h3>Order received</h3><p class="sub">Order <b id="egid"></b>. We've emailed you a confirmation. As soon as your InstaPay transfer arrives, your download link is on its way to <b id="egto"></b>.</p><button type="button" class="btn btn-dark egclose">Done</button></div>
+</div></div>
+
 <a class="btn btn-gold sticky" href="#pricing">Get the planner, from $15</a>
 
 <script>
@@ -515,6 +563,31 @@ footer a{color:#fff}
  // muted preview skips the slow opening; tap for sound restarts from the start
  v.loop=false;
  v.addEventListener('ended',function(){s.querySelector('span').textContent='Watch again with sound';s.style.display='flex';});
+})();
+</script>
+<script src="https://gumroad.com/js/gumroad.js"></script>
+<script>
+(function(){
+ var m=document.getElementById('egm'),$=function(i){return document.getElementById(i)},tier='C';
+ function setTier(t){tier=t;document.querySelectorAll('input[name=egtier]').forEach(function(r){r.checked=r.value===t;r.parentNode.classList.toggle('sel',r.value===t)});$('egamt').textContent=t==='C'?'699 EGP':'349 EGP'}
+ function open(t){setTier(t||'C');$('egform').hidden=false;$('egdone').hidden=true;$('egerr').textContent='';m.classList.add('on');document.body.style.overflow='hidden'}
+ function close(){m.classList.remove('on');document.body.style.overflow=''}
+ document.querySelectorAll('.egopen').forEach(function(b){b.addEventListener('click',function(){open(b.getAttribute('data-tier'))})});
+ document.querySelectorAll('input[name=egtier]').forEach(function(r){r.addEventListener('change',function(){setTier(r.value)})});
+ m.addEventListener('click',function(e){if(e.target===m||e.target.classList.contains('egx')||e.target.classList.contains('egclose'))close()});
+ document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
+ $('egcopy').addEventListener('click',function(){var t='ali.elnimer@instapay';(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){$('egcopy').textContent='Copied'},function(){$('egcopy').textContent='Copy failed'});setTimeout(function(){$('egcopy').textContent='Copy'},2000)});
+ $('egsend').addEventListener('click',function(){
+  var d={name:$('egname').value.trim(),email:$('egemail').value.trim(),phone:$('egphone').value.trim(),payer:$('egpayer').value.trim(),tier:tier,website:$('egweb').value};
+  if(!d.name||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)||!d.payer){$('egerr').textContent='Please add your name, a valid email and the name on your InstaPay transfer.';return}
+  var b=$('egsend');b.disabled=true;b.textContent='Sending...';$('egerr').textContent='';
+  fetch('https://codautomation.app.n8n.cloud/webhook/sm-eg-order',{method:'POST',body:new URLSearchParams(d)})
+   .then(function(r){return r.json()}).then(function(j){
+    if(j&&j.ok){$('egid').textContent=j.id;$('egto').textContent=d.email;$('egform').hidden=true;$('egdone').hidden=false}
+    else{$('egerr').textContent=(j&&j.error)||'Something went wrong. Please try again.'}
+   }).catch(function(){$('egerr').textContent='Could not send. Check your connection, or email studiomargin.help@gmail.com.'})
+   .then(function(){b.disabled=false;b.textContent="I've sent it"});
+ });
 })();
 </script>
 </body>
