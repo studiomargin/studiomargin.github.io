@@ -206,7 +206,7 @@ footer a{color:#fff}
   <p class="sub">The Excel + Google Sheets planner that shows the real cost of every service, what you actually kept this month, and who to rebook this week.</p>
   <div class="cta">
    <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
-   <button class="btn btn-line" id="watch" type="button">Watch the 17-sec demo</button>
+   <button class="btn btn-line" id="watch" type="button">Watch the 16-sec video</button>
   </div>
   <div class="chips">
    <span class="chip"><b>5-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip"><b>One payment</b>, no subscription</span><span class="chip"><b>Instant</b> download</span>
@@ -216,7 +216,7 @@ footer a{color:#fff}
   <div class="float f1">Example month<b>Kept 4,504</b>of 5,750 taken in</div>
   <div class="float f2">This week<b>Text Hannah</b>due for a rebook</div>
   <div class="phone">
-   <video id="demo" src="demo.mp4" poster="poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="17-second demo of the planner with voiceover"></video>
+   <video id="demo" src="https://d2ol7oe51mr4n9.cloudfront.net/user_3MKjPnH9Bv2KB4hydGC09naYFdH/f1e6fb49-81cc-4540-8409-ead84571b069.mp4" poster="https://d2ol7oe51mr4n9.cloudfront.net/user_3MKjPnH9Bv2KB4hydGC09naYFdH/4be0c7ab-b2ed-41f7-b259-8d88a7fc42b7.jpg" autoplay muted playsinline preload="auto" aria-label="16-second video about the planner with voiceover"></video>
    <button class="sound" id="sound" type="button" aria-label="Turn sound on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg><span>Tap for sound</span></button>
   </div>
  </div>
@@ -506,11 +506,8 @@ footer a{color:#fff}
   ['cPrice','cMin','cProd','cPay','cOver','cMar','cCur'].forEach(function(i){$(i).addEventListener('input',calc)});calc();
  })();
  // muted preview skips the slow opening; tap for sound restarts from the start
- v.loop=true;
- v.addEventListener('loadedmetadata',function(){if(v.muted)v.currentTime=4.2});
- v.addEventListener('ended',function(){v.currentTime=v.muted?4.2:0;v.play().catch(function(){})});
- v.addEventListener('timeupdate',function(){if(v.muted&&v.currentTime<4)v.currentTime=4.2;if(v.duration&&v.currentTime>v.duration-0.15){v.currentTime=v.muted?4.2:0;}});
- setInterval(function(){if(v.paused&&!v.dataset.user){v.play().catch(function(){})}},1500);
+ v.loop=false;
+ v.addEventListener('ended',function(){s.querySelector('span').textContent='Watch again with sound';s.style.display='flex';});
 })();
 </script>
 </body>
