@@ -28,7 +28,7 @@ h3{font-size:24px}
 .kicker{font-size:12.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold)}
 .sub{font-size:clamp(17px,1.9vw,20px);color:var(--soft)}
 .gold{color:var(--gold)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 30px;border-radius:999px;font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 30px;border-radius:999px;font-weight:800;font-size:17px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;cursor:pointer;border:0;font-family:inherit}
 .btn:hover{transform:translateY(-2px)}
 .btn-gold{background:linear-gradient(180deg,#D8BA7E,#C29E5E);color:#24172F;box-shadow:0 14px 34px rgba(201,168,106,.35)}
 .btn-line{border:1.5px solid rgba(255,255,255,.35);color:#fff;background:transparent}
@@ -154,14 +154,16 @@ footer a{color:#fff}
  .float{display:none}
  .plan.best{order:-1}
  .help{padding:28px}
- .sticky{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;box-shadow:0 16px 36px rgba(0,0,0,.45)}
+ .hm{display:none}
+ .sticky{display:flex;opacity:0;pointer-events:none;transition:opacity .25s;position:fixed;left:12px;right:12px;bottom:12px;z-index:40;box-shadow:0 16px 36px rgba(0,0,0,.45)}
  footer{padding-bottom:100px}
+ .sticky.show{opacity:1;pointer-events:auto}
 }
 </style>
 </head>
 <body>
 
-<div class="bar">Launch prices: Starter <b>$15</b> · Complete <b>$29</b> · Instant download</div>
+<div class="bar">Launch prices: Starter <b>$15</b> · Complete <b>$29</b><span class="hm"> · Instant download</span></div>
 
 <nav><div class="wrap">
  <img src="wordmark_dark.png" alt="studiomargin" width="142" height="26">
@@ -422,6 +424,9 @@ footer a{color:#fff}
  s.addEventListener('click',on);
  v.addEventListener('click',function(){if(v.muted){on()}else{v.muted=true;s.style.display='flex'}});
  w.addEventListener('click',function(){v.scrollIntoView({behavior:'smooth',block:'center'});on();});
+ var st=document.querySelector('.sticky'),pr=document.getElementById('pricing');
+ function ck(){var r=pr.getBoundingClientRect();st.classList.toggle('show',window.scrollY>700&&!(r.top<window.innerHeight&&r.bottom>0));}
+ window.addEventListener('scroll',ck,{passive:true});ck();
 })();
 </script>
 </body>
