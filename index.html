@@ -167,6 +167,11 @@ footer a{color:#fff}
 .res b{font-size:22px;font-family:Georgia,serif}
 .verdict{margin:18px 0;padding:16px 18px;border-radius:14px;font-weight:700;font-size:16px;line-height:1.4}
 .verdict.bad{background:#FCE8EF;color:#8E1F4F}.verdict.ok{background:#E3F4EE;color:#1F5E4F}
+.calc details.more{margin-top:4px;border-top:1px solid rgba(255,255,255,.12);padding-top:12px}
+.calc details.more summary{cursor:pointer;color:var(--gold);font-weight:700;font-size:14px;margin-bottom:12px;list-style:none}
+.calc details.more summary::-webkit-details-marker{display:none}
+.calc .big{display:flex;flex-direction:column;padding-bottom:6px}.calc .big span{color:var(--mute);font-size:15px}
+.calc .big b{font-family:Georgia,serif;font-size:46px;line-height:1.1;color:var(--rasp);margin:2px 0}
 .calc .out .btn{margin-top:auto}
 .fit{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:44px;max-width:980px;margin-left:auto;margin-right:auto}
 .fit .card ul{list-style:none;margin-top:12px}
@@ -269,7 +274,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
 </head>
 <body>
 
-<div class="bar">Launch prices: Starter <b>$15</b> · Complete <b>$29</b><span class="hm"> · Instant download</span></div>
+<div class="bar">Launch prices: Starter <b>$15</b> · Complete <b>$22</b> until 4 Dec (then $29)<span class="hm"> · Instant download</span></div>
 
 <nav><div class="wrap">
  <img src="wordmark_dark.png" alt="studiomargin" width="142" height="26">
@@ -295,7 +300,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
    <button class="btn btn-line" id="watch" type="button">Watch the 16-sec video</button>
   </div>
   <div class="chips vA">
-   <span class="chip"><b>5-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>One payment</b>, no subscription</span><span class="chip hm2"><b>Instant</b> download</span>
+   <span class="chip"><b>10-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>One payment</b>, no subscription</span><span class="chip hm2"><b>Instant</b> download</span>
   </div>
   <div class="cta vH">
    <a class="btn btn-gold" href="#calculator" data-ev="hero_free_check">Check one price free <small>30 sec</small></a>
@@ -303,7 +308,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
   </div>
   <p class="promiseline vH"><b>Can't get it working?</b> Email us. We'll fix it, or refund you in full.</p>
   <div class="chips vH">
-   <span class="chip"><b>Fix-it-or-refund</b> promise</span><span class="chip"><b>£ $ € EGP</b> + more</span><span class="chip hm2"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>5-minute</b> setup</span>
+   <span class="chip"><b>Fix-it-or-refund</b> promise</span><span class="chip"><b>£ $ € EGP</b> + more</span><span class="chip hm2"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>10-minute</b> setup</span>
   </div>
  
  </div>
@@ -324,27 +329,31 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
  <div class="center">
   <div class="kicker">Free price check</div>
   <h2 style="margin-top:12px">Is your price <span class="gold">really</span> paying you?</h2>
-  <p class="sub">Try one service now. The planner does this for every service you offer.</p>
+  <p class="sub">Four numbers, ten seconds. The planner does this for every service you offer.</p>
  </div>
  <div class="calc">
   <div class="in">
    <div class="row"><div><label for="cPrice">Your price</label><input id="cPrice" type="number" inputmode="decimal" min="0" value="45"></div>
-    <div><label for="cCur">Currency</label><select id="cCur"><option value="$">$ USD</option><option value="£">£ GBP</option><option value="€">€ EUR</option><option value="A$">A$ AUD</option><option value="C$">C$ CAD</option><option value="AED ">AED</option><option value="SAR ">SAR</option><option value="EGP ">EGP</option></select></div></div>
-   <div class="row"><div><label for="cMin">Minutes it takes</label><input id="cMin" type="number" inputmode="numeric" min="1" value="60"></div>
-    <div><label for="cProd">Product cost</label><input id="cProd" type="number" inputmode="decimal" min="0" value="6"><div class="hint">Gel, lashes, foundation…</div></div></div>
-   <div class="row"><div><label for="cPay">Hourly pay you want</label><input id="cPay" type="number" inputmode="decimal" min="0" value="25"></div>
-    <div><label for="cOver">Overhead per hour</label><input id="cOver" type="number" inputmode="decimal" min="0" value="6"><div class="hint">Rent, apps, insurance ÷ hours</div></div></div>
-   <div class="row" style="margin-bottom:0"><div><label for="cMar">Profit margin %</label><input id="cMar" type="number" inputmode="decimal" min="0" max="90" value="20"></div><div></div></div>
+    <div><label for="cMin">Minutes it takes</label><input id="cMin" type="number" inputmode="numeric" min="1" value="60"></div></div>
+   <div class="row"><div><label for="cProd">Product cost</label><input id="cProd" type="number" inputmode="decimal" min="0" value="6"><div class="hint">Gel, lashes, foundation you use</div></div>
+    <div><label for="cPay">Pay you want an hour</label><input id="cPay" type="number" inputmode="decimal" min="0" value="25"></div></div>
+   <details class="more"><summary>Fine-tune (optional): currency, business costs, profit</summary>
+    <div class="row"><div><label for="cCur">Currency</label><select id="cCur"><option value="$">$ USD</option><option value="£">£ GBP</option><option value="€">€ EUR</option><option value="A$">A$ AUD</option><option value="C$">C$ CAD</option><option value="AED ">AED</option><option value="SAR ">SAR</option><option value="EGP ">EGP</option></select></div>
+     <div><label for="cMar">Profit on top %</label><input id="cMar" type="number" inputmode="decimal" min="0" max="90" value="20"></div></div>
+    <div class="row" style="margin-bottom:0"><div><label for="cCosts">Business costs a month</label><input id="cCosts" type="number" inputmode="decimal" min="0" value="600"><div class="hint">Rent, apps, insurance</div></div>
+     <div><label for="cHours">Hours you work a month</label><input id="cHours" type="number" inputmode="numeric" min="1" value="120"></div></div>
+    <input id="cOver" type="hidden" value="5">
+   </details>
   </div>
   <div class="out">
-   <div class="res"><span>Real cost</span><b id="oCost">–</b></div>
-   <div class="res"><span>Suggested price</span><b id="oSug">–</b></div>
-   <div class="res"><span>You keep per hour</span><b id="oKeep">–</b></div>
+   <div class="big"><span>This service pays you</span><b id="oKeep">–</b><span id="oKeepSub">an hour, after products and business costs</span></div>
    <div class="verdict" id="oVer">–</div>
+   <div class="res"><span>Price that pays you properly</span><b id="oSug">–</b></div>
+   <div class="res"><span>Real cost of one appointment</span><b id="oCost">–</b></div>
    <p class="bridge vH">That's one service. The planner checks your whole menu every month and flags every price that's too low.</p>
    <a class="btn btn-gold vA" href="#pricing" data-ev="calc_buy">Check every service <small>from $15</small></a>
    <a class="btn btn-gold vH" href="#pricing" data-ev="calc_buy">Fix every price <small>from $15</small></a>
-   <div class="cap" style="color:#8a8090">Same maths as the planner: real cost = products + your pay for the time + overhead. Before tax.</div>
+   <div class="cap" style="color:#8a8090">Same maths as the planner: real cost = products + your pay for the time + business costs. Before tax.</div>
    <form class="mailres" id="mailres" novalidate>
     <label for="mrEmail">Email me this result</label>
     <div class="mrrow"><input id="mrEmail" type="email" placeholder="you@email.com" autocomplete="email"><button class="btn btn-dark" type="submit" id="mrBtn">Send</button></div>
@@ -386,7 +395,8 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
   <div class="plan best">
    <span class="tag">BEST VALUE</span>
    <h3>Complete</h3>
-   <div class="price">$29 <span>one-time</span></div>
+   <div class="price">$22 <span>launch price</span></div>
+   <div class="note" style="margin:-2px 0 6px;font-weight:700;opacity:.9">Until 4 Dec 2026, then $29 · one payment</div>
    <div class="note">All 11 pages + example file</div>
    <ul>
     <li><b>Everything in Starter</b></li>
@@ -397,7 +407,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
     <li>Phone inbox for booking requests</li>
     <li>Example file + 16-page guide</li>
    </ul>
-   <a class="btn btn-gold" href="https://studiomargin.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete, $29</a>
+   <a class="btn btn-gold" href="https://studiomargin.gumroad.com/l/nail-tech-hub/LAUNCH22?wanted=true">Get Complete, $22</a>
   </div>
  </div>
  <div class="trust" aria-label="Safe checkout">
@@ -420,7 +430,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
   <h2 style="margin-top:12px">Starter vs Complete</h2>
  </div>
  <div class="cmpwrap"><table class="cmp">
-  <thead><tr><th></th><th>Starter<br><span style="font-family:Arial;font-size:15px;color:var(--mute)">$15</span></th><th class="c">Complete<br><span style="font-family:Arial;font-size:15px;color:#fff">$29</span></th></tr></thead>
+  <thead><tr><th></th><th>Starter<br><span style="font-family:Arial;font-size:15px;color:var(--mute)">$15</span></th><th class="c">Complete<br><span style="font-family:Arial;font-size:15px;color:#fff">$22 until 4 Dec</span></th></tr></thead>
   <tbody>
    <tr class="grp"><td colspan="3">Price &amp; plan</td></tr>
    <tr><td>Service menu with real cost &amp; suggested price</td><td class="y">✓</td><td class="c y">✓</td></tr>
@@ -444,7 +454,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
    <tr><td>Filled-in example file to explore</td><td class="n">—</td><td class="c y">✓</td></tr>
    <tr><td>Free updates for every 2.x version</td><td class="y">✓</td><td class="c y">✓</td></tr>
   </tbody>
-  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://studiomargin.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://studiomargin.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete</a></td></tr></tfoot>
+  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://studiomargin.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://studiomargin.gumroad.com/l/nail-tech-hub/LAUNCH22?wanted=true">Get Complete</a></td></tr></tfoot>
  </table></div>
 </div></section>
 
@@ -565,7 +575,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
 <section><div class="wrap">
  <div class="center">
   <div class="kicker">After you buy</div>
-  <h2 style="margin-top:12px">Set up in 5 minutes.</h2>
+  <h2 style="margin-top:12px">Set up in about 10 minutes.</h2>
  </div>
  <div class="steps">
   <div class="card"><div class="num">01</div><h3 style="margin-top:10px">Download instantly</h3><p>Your files arrive by email straight after checkout, and in your Gumroad library.</p></div>
@@ -595,7 +605,7 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
 <section class="final"><div class="wrap">
  <div class="kicker">StudioMargin</div>
  <h2 style="margin-top:12px">Be fully booked, <span class="gold">and profitable.</span></h2>
- <p class="sub" style="margin:16px auto 30px;max-width:560px">Five minutes to set up. Every week after, you know exactly where your money goes.</p>
+ <p class="sub" style="margin:16px auto 30px;max-width:560px">About ten minutes to set up. Every week after, you know exactly where your money goes.</p>
  <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
 </div></section>
 
@@ -648,14 +658,15 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
 
  (function(){var $=function(i){return document.getElementById(i)};
   function f(n,c){return c+(Math.round(n*100)/100).toFixed(2)}
-  function calc(){var P=+$('cPrice').value||0,M=+$('cMin').value||0,PR=+$('cProd').value||0,H=+$('cPay').value||0,O=+$('cOver').value||0,G=Math.min(+$('cMar').value||0,90)/100,c=$('cCur').value;
+  function calc(){var P=+$('cPrice').value||0,M=+$('cMin').value||0,PR=+$('cProd').value||0,H=+$('cPay').value||0,MC=+$('cCosts').value||0,HR=+$('cHours').value||0,G=Math.min(Math.max(+$('cMar').value||0,0),90)/100,c=$('cCur').value;
+   var O=HR>0?MC/HR:0;$('cOver').value=(Math.round(O*100)/100).toFixed(2);
    var h=M/60,cost=PR+H*h+O*h,sug=cost/(1-G),keep=h>0?(P-PR-O*h)/h:0;
    $('oCost').textContent=f(cost,c);$('oSug').textContent=f(sug,c);$('oKeep').textContent=f(keep,c);
    var v=$('oVer');
    if(!M){v.className='verdict';v.textContent='Add the minutes to see your result.';return}
-   if(P+0.005<sug){v.className='verdict bad';v.textContent='Below target: you\'re about '+f(sug-P,c)+' short per appointment. Try '+f(sug,c)+'.'}
-   else{v.className='verdict ok';v.textContent='On target: this price covers your pay, overhead and margin.'}}
-  ['cPrice','cMin','cProd','cPay','cOver','cMar','cCur'].forEach(function(i){$(i).addEventListener('input',calc)});calc();
+   if(P+0.005<sug){v.className='verdict bad';v.textContent='Below target: charge '+f(sug,c)+' (about '+f(sug-P,c)+' more) to pay yourself '+f(H,c)+' an hour, cover your costs and keep '+Math.round(G*100)+'% profit.'}
+   else{v.className='verdict ok';v.textContent='On target: this price pays you '+f(H,c)+' an hour, covers your costs and keeps '+Math.round(G*100)+'% profit.'}}
+  ['cPrice','cMin','cProd','cPay','cCosts','cHours','cMar','cCur'].forEach(function(i){$(i).addEventListener('input',calc)});calc();
  })();
  // muted preview skips the slow opening; tap for sound restarts from the start
  v.loop=false;
