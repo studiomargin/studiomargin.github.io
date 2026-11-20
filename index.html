@@ -11,6 +11,12 @@
 <meta property="og:url" content="https://studiomargin.github.io/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
+<script>
+/* A/B test: each visitor is randomly given A (current page) or H (hybrid), kept for return visits. Force one with ?v=A or ?v=H */
+(function(){var v,q=location.search.match(/[?&]v=([AH])\b/);try{v=localStorage.getItem('sm_v')}catch(e){}
+if(q)v=q[1];if(v!=='A'&&v!=='H')v=Math.random()<.5?'A':'H';try{localStorage.setItem('sm_v',v)}catch(e){}
+document.documentElement.setAttribute('data-v',v);window.smV=v})();
+</script>
 <link rel="icon" href="favicon.png">
 <link rel="apple-touch-icon" href="icon-180.png">
 <style>
@@ -242,6 +248,23 @@ footer a{color:#fff}
 .egbox .btn{width:100%;margin-top:6px}.egerr{color:#B3245F;font-size:14px;min-height:18px}
 .egdone{text-align:center;padding:18px 4px}.egdone .ck{width:56px;height:56px;border-radius:50%;background:var(--rasp);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
 @media(max-width:640px){.egbar{flex-wrap:wrap}.egbar .btn{width:100%}}
+/* A/B variants */
+html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
+.promiseline{margin-top:14px;font-size:15px;color:var(--soft)}.promiseline b{color:#fff}
+.bridge{font-size:14.5px;color:var(--mute);margin:4px 0 14px;line-height:1.45}
+.unsure{max-width:940px;margin:36px auto 0;background:#fff;border:2px solid var(--gold);border-radius:20px;padding:20px 24px;color:var(--ink);text-align:left}
+.unsure b{font-size:17px}.unsure p{margin-top:4px}
+/* email me my result */
+.mailres{margin-top:16px;padding-top:14px;border-top:1px solid #F0E8F3}
+.mailres>label{font-size:14px;font-weight:700;color:var(--ink);display:block;margin-bottom:6px}
+.mrrow{display:flex;gap:8px}.mrrow input{flex:1;min-width:0;border:2px solid #E3D6EA;border-radius:12px;padding:10px 12px;font-size:15px;font-family:inherit}
+.mrrow .btn{padding:10px 18px;font-size:15px}
+.mailres>label.mrok{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;font-weight:400;color:var(--mute);margin:8px 0 0;line-height:1.4}.mrok input{margin-top:2px}
+.calc .mailres input[type=checkbox]{width:auto;flex:none;padding:0;margin:2px 0 0;border:0}
+.mrmsg{font-size:13.5px;min-height:18px;margin-top:6px;color:#1F5E4F}.mrmsg.err{color:#B3245F}
+.mailres .hp{position:absolute;left:-9999px}
+/* why we built this */
+.why{max-width:760px;margin:0 auto;text-align:left}.why p{margin-top:14px}.why .sig{margin-top:18px;font-weight:700;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -267,12 +290,20 @@ footer a{color:#fff}
  </div>
  <div class="h-bot">
   <p class="sub">The Excel + Google Sheets planner that shows the real cost of every service, what you actually kept this month, and who to rebook this week.</p>
-  <div class="cta">
-   <a class="btn btn-gold" href="#pricing">Get the planner <small>from $15</small></a>
+  <div class="cta vA">
+   <a class="btn btn-gold" href="#pricing" data-ev="hero_buy">Get the planner <small>from $15</small></a>
    <button class="btn btn-line" id="watch" type="button">Watch the 16-sec video</button>
   </div>
-  <div class="chips">
+  <div class="chips vA">
    <span class="chip"><b>5-minute</b> setup</span><span class="chip"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>One payment</b>, no subscription</span><span class="chip hm2"><b>Instant</b> download</span>
+  </div>
+  <div class="cta vH">
+   <a class="btn btn-gold" href="#calculator" data-ev="hero_free_check">Check one price free <small>30 sec</small></a>
+   <a class="btn btn-line" href="#pricing" data-ev="hero_plans">See plans from $15</a>
+  </div>
+  <p class="promiseline vH"><b>Can't get it working?</b> Email us. We'll fix it, or refund you in full.</p>
+  <div class="chips vH">
+   <span class="chip"><b>Fix-it-or-refund</b> promise</span><span class="chip"><b>£ $ € EGP</b> + more</span><span class="chip hm2"><b>Excel</b> + <b>Google Sheets</b></span><span class="chip hm2"><b>5-minute</b> setup</span>
   </div>
  
  </div>
@@ -310,8 +341,17 @@ footer a{color:#fff}
    <div class="res"><span>Suggested price</span><b id="oSug">–</b></div>
    <div class="res"><span>You keep per hour</span><b id="oKeep">–</b></div>
    <div class="verdict" id="oVer">–</div>
-   <a class="btn btn-gold" href="#pricing">Check every service <small>from $15</small></a>
+   <p class="bridge vH">That's one service. The planner checks your whole menu every month and flags every price that's too low.</p>
+   <a class="btn btn-gold vA" href="#pricing" data-ev="calc_buy">Check every service <small>from $15</small></a>
+   <a class="btn btn-gold vH" href="#pricing" data-ev="calc_buy">Fix every price <small>from $15</small></a>
    <div class="cap" style="color:#8a8090">Same maths as the planner: real cost = products + your pay for the time + overhead. Before tax.</div>
+   <form class="mailres" id="mailres" novalidate>
+    <label for="mrEmail">Email me this result</label>
+    <div class="mrrow"><input id="mrEmail" type="email" placeholder="you@email.com" autocomplete="email"><button class="btn btn-dark" type="submit" id="mrBtn">Send</button></div>
+    <input type="text" id="mrWeb" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="mrok"><input type="checkbox" id="mrConsent"><span>Also send me the occasional pricing tip from StudioMargin. Optional, unsubscribe any time.</span></label>
+    <div class="mrmsg" id="mrMsg">We only use your email to send this result (and tips, if you tick the box).</div>
+   </form>
   </div>
  </div>
 
@@ -327,6 +367,7 @@ footer a{color:#fff}
   <h2 style="margin-top:12px">One payment. Yours to keep.</h2>
   <p class="sub">Instant download. Works in Excel and Google Sheets. Free updates for every 2.x version.</p>
  </div>
+ <div class="unsure vH"><b>Not sure you'll use it?</b><p>You only type in the lilac cells; everything else fills in by itself. If something's wrong, email us and we'll fix it. If we can't, we'll refund you in full.</p></div>
  <div class="plans">
   <div class="plan">
    <h3>Starter</h3>
@@ -340,7 +381,7 @@ footer a{color:#fff}
     <li>Dashboard: took in − spent = kept</li>
     <li>Quick-start guide</li>
    </ul>
-   <a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter, $15</a>
+   <a class="btn btn-dark" href="https://studiomargin.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter, $15</a>
   </div>
   <div class="plan best">
    <span class="tag">BEST VALUE</span>
@@ -356,7 +397,7 @@ footer a{color:#fff}
     <li>Phone inbox for booking requests</li>
     <li>Example file + 16-page guide</li>
    </ul>
-   <a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete, $29</a>
+   <a class="btn btn-gold" href="https://studiomargin.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete, $29</a>
   </div>
  </div>
  <div class="trust" aria-label="Safe checkout">
@@ -370,7 +411,8 @@ footer a{color:#fff}
   <div class="pays"><b>Pay with</b><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><b style="margin-left:auto">Prices in USD · one-time</b></div>
  </div>
  <div class="egbar"><span class="egflag">EG</span><div><b>In Egypt? Pay in pounds with InstaPay.</b><span>Starter 349 EGP · Complete 699 EGP · download by email</span></div><button type="button" class="btn btn-dark egopen" data-tier="C">Pay with InstaPay</button></div>
- <div class="promise"><div class="seal">✓</div><div><b>Our promise</b><p>If something's wrong with your spreadsheet, email us and we'll fix it. If we can't fix it, we'll refund you in full.</p></div></div>
+ <p class="fine vH" style="color:var(--mute)">Checkout in USD. Your bank converts it to your currency.</p>
+ <div class="promise vA"><div class="seal">✓</div><div><b>Our promise</b><p>If something's wrong with your spreadsheet, email us and we'll fix it. If we can't fix it, we'll refund you in full.</p></div></div>
 
 
  <div id="compare" class="center" style="margin-top:96px">
@@ -402,7 +444,7 @@ footer a{color:#fff}
    <tr><td>Filled-in example file to explore</td><td class="n">—</td><td class="c y">✓</td></tr>
    <tr><td>Free updates for every 2.x version</td><td class="y">✓</td><td class="c y">✓</td></tr>
   </tbody>
-  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://marginalia70.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://marginalia70.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete</a></td></tr></tfoot>
+  <tfoot><tr><td></td><td><a class="btn btn-dark" href="https://studiomargin.gumroad.com/l/nail-tech-starter?wanted=true">Get Starter</a></td><td class="c"><a class="btn btn-gold" href="https://studiomargin.gumroad.com/l/nail-tech-hub?wanted=true">Get Complete</a></td></tr></tfoot>
  </table></div>
 </div></section>
 
@@ -504,6 +546,22 @@ footer a{color:#fff}
 
 
 
+<section class="light" id="why"><div class="wrap">
+ <div class="center">
+  <div class="kicker">Why we built this</div>
+  <h2 style="margin-top:12px">Busy shouldn't mean guessing.</h2>
+ </div>
+ <div class="why">
+  <p>Being fully booked doesn't always mean being well paid. Booking apps are great at filling your diary, but they don't tell you what each service really pays you once your products, your time and your rent are counted.</p>
+  <p>So we built a simple planner that does that maths for you, in a spreadsheet you own, with one payment and no subscription. You type in the lilac cells; it does the rest.</p>
+  <p>StudioMargin is new, and we'd rather show you than tell you. That's why the price check above is free, and why every screenshot on this page is a labelled example. Questions or ideas? Email <a href="mailto:studiomargin.help@gmail.com">studiomargin.help@gmail.com</a> and a real person will reply.</p>
+  <!-- PROOF SLOT 1: add a real phone screen recording of logging one appointment here (label it "Real screen recording"). -->
+  <!-- PROOF SLOT 2: once timed for real, add e.g. "Logging an appointment takes about __ seconds (we timed it)". Do not add a number until it is measured. -->
+  <!-- PROOF SLOT 3: real buyer feedback, only with the buyer's permission and only once it exists. -->
+  <p class="sig">The StudioMargin Team</p>
+ </div>
+</div></section>
+
 <section><div class="wrap">
  <div class="center">
   <div class="kicker">After you buy</div>
@@ -574,7 +632,8 @@ footer a{color:#fff}
  <div class="egdone" id="egdone" hidden><div class="ck">✓</div><h3>Order received</h3><p class="sub">Order <b id="egid"></b>. We've emailed you a confirmation. As soon as your InstaPay transfer arrives, your download link is on its way to <b id="egto"></b>.</p><button type="button" class="btn btn-dark egclose">Done</button></div>
 </div></div>
 
-<a class="btn btn-gold sticky" href="#pricing">Get the planner, from $15</a>
+<a class="btn btn-gold sticky vA" href="#pricing">Get the planner, from $15</a>
+<a class="btn btn-gold sticky vH" href="#pricing">See plans from $15</a>
 
 <script>
 (function(){
@@ -583,8 +642,8 @@ footer a{color:#fff}
  s.addEventListener('click',on);
  v.addEventListener('click',function(){if(v.muted){on()}else{v.muted=true;s.style.display='flex'}});
  w.addEventListener('click',function(){v.scrollIntoView({behavior:'smooth',block:'center'});on();});
- var st=document.querySelector('.sticky'),pr=document.getElementById('pricing');
- function ck(){var r=pr.getBoundingClientRect();st.classList.toggle('show',window.scrollY>700&&!(r.top<window.innerHeight&&r.bottom>0));}
+ var sts=document.querySelectorAll('.sticky'),pr=document.getElementById('pricing');
+ function ck(){var r=pr.getBoundingClientRect(),on=window.scrollY>700&&!(r.top<window.innerHeight&&r.bottom>0);sts.forEach(function(st){st.classList.toggle('show',on)});}
  window.addEventListener('scroll',ck,{passive:true});ck();
 
  (function(){var $=function(i){return document.getElementById(i)};
@@ -606,9 +665,25 @@ footer a{color:#fff}
 <script src="https://gumroad.com/js/gumroad.js"></script>
 <script>
 (function(){
- var T=window.smTrack=function(e){try{fetch('https://codautomation.app.n8n.cloud/webhook/sm-track?e='+e,{mode:'no-cors',keepalive:true}).catch(function(){})}catch(x){}};
+ var T=window.smTrack=function(e){if(/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){console.log('[sm-track skipped locally]',e,window.smV);return}try{fetch('https://codautomation.app.n8n.cloud/webhook/sm-track?e='+e+'&v='+(window.smV||'A'),{mode:'no-cors',keepalive:true}).catch(function(){})}catch(x){}};
  T('views');
+ document.querySelectorAll('[data-ev]').forEach(function(a){a.addEventListener('click',function(){T(a.getAttribute('data-ev'))})});
+ var used=false;document.querySelectorAll('#calculator input,#calculator select').forEach(function(i){if(i.closest('.mailres'))return;i.addEventListener('input',function(){if(!used){used=true;T('calc_used')}})});
  document.querySelectorAll('a[href*="gumroad.com/l/"]').forEach(function(a){a.addEventListener('click',function(){T(a.href.indexOf('nail-tech-hub')>-1?'buy_complete':'buy_starter')})});
+})();
+(function(){
+ /* Email me my result: optional; sends only what the visitor typed + the calculated result. Needs the n8n webhook "sm-result". */
+ var f=document.getElementById('mailres');if(!f)return;var $=function(i){return document.getElementById(i)};
+ f.addEventListener('submit',function(e){e.preventDefault();var em=$('mrEmail').value.trim(),msg=$('mrMsg'),b=$('mrBtn');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){msg.className='mrmsg err';msg.textContent='Please add a valid email.';return}
+  var d={email:em,tips:$('mrConsent').checked?'yes':'no',website:$('mrWeb').value,v:window.smV||'A',
+   currency:$('cCur').value.trim(),price:$('cPrice').value,minutes:$('cMin').value,products:$('cProd').value,pay:$('cPay').value,overhead:$('cOver').value,margin:$('cMar').value,
+   real_cost:$('oCost').textContent,suggested:$('oSug').textContent,keep_per_hour:$('oKeep').textContent,verdict:$('oVer').textContent};
+  b.disabled=true;b.textContent='Sending...';
+  fetch('https://codautomation.app.n8n.cloud/webhook/sm-result',{method:'POST',body:new URLSearchParams(d)})
+   .then(function(r){if(!r.ok)throw 0;window.smTrack&&window.smTrack('email_result');msg.className='mrmsg';msg.textContent='Sent. Check your inbox (and spam) in a minute.';f.reset()})
+   .catch(function(){msg.className='mrmsg err';msg.textContent='Could not send right now. Take a screenshot, or try again later.'})
+   .then(function(){b.disabled=false;b.textContent='Send'})});
 })();
 (function(){
  var m=document.getElementById('egm'),$=function(i){return document.getElementById(i)},tier='C';
