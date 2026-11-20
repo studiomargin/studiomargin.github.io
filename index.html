@@ -336,13 +336,13 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
    <div class="row"><div><label for="cPrice">Your price</label><input id="cPrice" type="number" inputmode="decimal" min="0" value="45"></div>
     <div><label for="cMin">Minutes it takes</label><input id="cMin" type="number" inputmode="numeric" min="1" value="60"></div></div>
    <div class="row"><div><label for="cProd">Product cost</label><input id="cProd" type="number" inputmode="decimal" min="0" value="6"><div class="hint">Gel, lashes, foundation you use</div></div>
-    <div><label for="cPay">Pay you want an hour</label><input id="cPay" type="number" inputmode="decimal" min="0" value="25"></div></div>
+    <div><label for="cPay">Pay you want per hour</label><input id="cPay" type="number" inputmode="decimal" min="0" value="25"></div></div>
    <details class="more"><summary>Fine-tune (optional): currency, business costs, profit</summary>
     <div class="row"><div><label for="cCur">Currency</label><select id="cCur"><option value="$">$ USD</option><option value="£">£ GBP</option><option value="€">€ EUR</option><option value="A$">A$ AUD</option><option value="C$">C$ CAD</option><option value="AED ">AED</option><option value="SAR ">SAR</option><option value="EGP ">EGP</option></select></div>
      <div><label for="cMar">Profit on top %</label><input id="cMar" type="number" inputmode="decimal" min="0" max="90" value="20"></div></div>
-    <div class="row" style="margin-bottom:0"><div><label for="cCosts">Business costs a month</label><input id="cCosts" type="number" inputmode="decimal" min="0" value="600"><div class="hint">Rent, apps, insurance</div></div>
+    <div class="row" style="margin-bottom:0"><div><label for="cCosts">Business costs a month</label><input id="cCosts" type="number" inputmode="decimal" min="0" value="720"><div class="hint">Rent, apps, insurance</div></div>
      <div><label for="cHours">Hours you work a month</label><input id="cHours" type="number" inputmode="numeric" min="1" value="120"></div></div>
-    <input id="cOver" type="hidden" value="5">
+    <input id="cOver" type="hidden" value="6">
    </details>
   </div>
   <div class="out">
@@ -421,7 +421,6 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
   <div class="pays"><b>Pay with</b><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Apple Pay</span><span>Google Pay</span><b style="margin-left:auto">Prices in USD · one-time</b></div>
  </div>
  <div class="egbar"><span class="egflag">EG</span><div><b>In Egypt? Pay in pounds with InstaPay.</b><span>Starter 349 EGP · Complete 699 EGP · download by email</span></div><button type="button" class="btn btn-dark egopen" data-tier="C">Pay with InstaPay</button></div>
- <p class="fine vH" style="color:var(--mute)">Checkout in USD. Your bank converts it to your currency.</p>
  <div class="promise vA"><div class="seal">✓</div><div><b>Our promise</b><p>If something's wrong with your spreadsheet, email us and we'll fix it. If we can't fix it, we'll refund you in full.</p></div></div>
 
 
@@ -501,12 +500,12 @@ html[data-v=A] .vH,html[data-v=H] .vA{display:none!important}
   <div class="txt">
    <div class="kicker">Price every service right</div>
    <h2 style="margin-top:10px">Real cost. Right price.</h2>
-   <p class="sub">Products + your time + overhead, and the price that pays you properly. Anything too cheap is flagged.</p>
-   <div class="example">Example: a $45 gel mani has a real cost of $37 once your time, products and overhead count. The planner suggests $46.25.</div>
+   <p class="sub">Products + your time + business costs, and the price that pays you properly. Anything too cheap is flagged.</p>
+   <div class="example">Example: a $45 gel mani has a real cost of $37 once your time, products and business costs count. The planner suggests $46.25.</div>
   </div>
   <div class="stack">
    <div class="zoom"><img src="z_pricing.webp" alt="Service prices with real cost, suggested price and status" width="1257" height="488" loading="lazy"></div>
-   <div class="cap">Example file. Set your own hourly pay and margin.</div>
+   <div class="cap">Example file. Set your own hourly pay and profit %.</div>
   </div>
  </div>
 
